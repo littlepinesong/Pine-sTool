@@ -1,0 +1,54 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Pine_sTool.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Xaxis" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1275</Value>
+    </Setting>
+    <Setting Name="Yaxis" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">740</Value>
+    </Setting>
+    <Setting Name="SpanDuration" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">30</Value>
+    </Setting>
+    <Setting Name="SyncClickTimes" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="WholeKeyValue" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UserName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">176630</Value>
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2808725485godpinE</Value>
+    </Setting>
+    <Setting Name="URL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://192.168.100.12:8080/</Value>
+    </Setting>
+    <Setting Name="ExportPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">E:\产品文档\出厂资料</Value>
+    </Setting>
+    <Setting Name="ThreadNum" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="IsShowChromCheck" Type="System.String" Scope="User">
+      <Value Profile="(Default)">false</Value>
+    </Setting>
+    <Setting Name="DriverPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">E:\产品文档\出厂资料\chromedriver.exe</Value>
+    </Setting>
+    <Setting Name="Sch" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DrawingNumber" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="MES_URL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://hbmes.tbea-hb.com.cn/</Value>
+    </Setting>
+    <Setting Name="MES_ThreadNum" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

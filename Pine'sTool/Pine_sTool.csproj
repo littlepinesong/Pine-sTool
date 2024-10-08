@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8250E1A4-EA60-439D-AA8F-668AF5B30DFE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pine_sTool</RootNamespace>
+    <AssemblyName>Pine_sTool</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>alpha_blue_p.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v18.1.Core, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v18.1.Core, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v18.1.Core, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v18.1.UI, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="Maticsoft.Common">
+      <HintPath>..\Tools_Dlls\Maticsoft.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Maticsoft.DBUtility">
+      <HintPath>..\Tools_Dlls\Maticsoft.DBUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="MessageManager">
+      <HintPath>..\Tools_Dlls\MessageManager.dll</HintPath>
+    </Reference>
+    <Reference Include="MoveAndClickMouse, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MoveAndClickMouse\MoveAndClickMouse\bin\Release\MoveAndClickMouse.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Tools_Dlls\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TBEAHB.Base">
+      <HintPath>..\Tools_Dlls\TBEAHB.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="TBEAHB.Controls">
+      <HintPath>..\Tools_Dlls\TBEAHB.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver">
+      <HintPath>..\Tools_Dlls\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support">
+      <HintPath>..\Tools_Dlls\WebDriver.Support.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DetailedFunctionalities\HandleDuplicateRows.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailedFunctionalities\HandleDuplicateRows.Designer.cs">
+      <DependentUpon>HandleDuplicateRows.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailedFunctionalities\IntranetDataDownload\DownloadTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailedFunctionalities\IntranetDataDownload\DownloadTable.Designer.cs">
+      <DependentUpon>DownloadTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailedFunctionalities\IntranetDataDownload\PythonConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailedFunctionalities\IntranetDataDownload\PythonConfig.Designer.cs">
+      <DependentUpon>PythonConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailedFunctionalities\JSON\JSON_TO_DataTable.cs" />
+    <Compile Include="DetailedFunctionalities\JSON\SingleDrawUpdate.cs" />
+    <Compile Include="DetailedFunctionalities\MES\MES_Manage_New.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailedFunctionalities\MES\MES_Manage_New.Designer.cs">
+      <DependentUpon>MES_Manage_New.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailedFunctionalities\MES\MES_Manage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailedFunctionalities\MES\MES_Manage.Designer.cs">
+      <DependentUpon>MES_Manage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailedFunctionalities\MES\PythonConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailedFunctionalities\MES\PythonConfig.Designer.cs">
+      <DependentUpon>PythonConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailedFunctionalities\MES\直接扒MES界面的HTML转化为DataTable.cs" />
+    <Compile Include="DetailedFunctionalities\MouseClickProgram\ClickSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailedFunctionalities\MouseClickProgram\ClickSettingForm.Designer.cs">
+      <DependentUpon>ClickSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailedFunctionalities\MouseClickProgram\MouseClickClass.cs" />
+    <Compile Include="DetailedFunctionalities\ProcessControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailedFunctionalities\ProcessControl.Designer.cs">
+      <DependentUpon>ProcessControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailedFunctionalities\UserHeper.cs" />
+    <Compile Include="DetailedFunctionalities\Windchill登陆器\WindchilLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailedFunctionalities\Windchill登陆器\WindchilLogin.Designer.cs">
+      <DependentUpon>WindchilLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainControl\AutoLoginBigDataPlatform.cs" />
+    <Compile Include="MainControl\ControlPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainControl\ControlPanel.Designer.cs">
+      <DependentUpon>ControlPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainControl\ImageHelper.cs" />
+    <Compile Include="MainControl\MessageLogger.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="SQL\BLL\PT_IntranetLeaveFactoryDataTable.cs" />
+    <Compile Include="SQL\BLL\PT_IntranetLeaveFactoryPart.cs" />
+    <Compile Include="SQL\BLL\PT_MES_SCZJH_ALL_TypeOne.cs" />
+    <Compile Include="SQL\BLL\PT_MES_SCZJH_data.cs" />
+    <Compile Include="SQL\BLL\PT_MES_SCZJH_MergerTable.cs" />
+    <Compile Include="SQL\BLL\PT_MES_SCZJH_nodeList.cs" />
+    <Compile Include="SQL\BLL\View_PT_MES_SCZJH_Merger.cs" />
+    <Compile Include="SQL\DAL\PT_IntranetLeaveFactoryDataTable.cs" />
+    <Compile Include="SQL\DAL\PT_IntranetLeaveFactoryPart.cs" />
+    <Compile Include="SQL\DAL\PT_MES_SCZJH_ALL_TypeOne.cs" />
+    <Compile Include="SQL\DAL\PT_MES_SCZJH_data.cs" />
+    <Compile Include="SQL\DAL\PT_MES_SCZJH_MergerTable.cs" />
+    <Compile Include="SQL\DAL\PT_MES_SCZJH_nodeList.cs" />
+    <Compile Include="SQL\DAL\View_PT_MES_SCZJH_Merger.cs" />
+    <Compile Include="SQL\DESEncrypt.cs" />
+    <Compile Include="SQL\EXT\PT_IntranetLeaveFactoryDataTable.cs" />
+    <Compile Include="SQL\EXT\PT_IntranetLeaveFactoryPart.cs" />
+    <Compile Include="SQL\EXT\PT_MES_SCZJH_ALL_TypeOne.cs" />
+    <Compile Include="SQL\EXT\PT_MES_SCZJH_data.cs" />
+    <Compile Include="SQL\EXT\PT_MES_SCZJH_MergerTable.cs" />
+    <Compile Include="SQL\EXT\PT_MES_SCZJH_nodeList.cs" />
+    <Compile Include="SQL\EXT\View_PT_MES_SCZJH_Merger.cs" />
+    <Compile Include="SQL\Model\PT_IntranetLeaveFactoryDataTable.cs" />
+    <Compile Include="SQL\Model\PT_IntranetLeaveFactoryPart.cs" />
+    <Compile Include="SQL\Model\PT_MES_SCZJH_ALL_TypeOne.cs" />
+    <Compile Include="SQL\Model\PT_MES_SCZJH_data.cs" />
+    <Compile Include="SQL\Model\PT_MES_SCZJH_MergerTable.cs" />
+    <Compile Include="SQL\Model\PT_MES_SCZJH_nodeList.cs" />
+    <Compile Include="SQL\Model\View_PT_MES_SCZJH_Merger.cs" />
+    <Compile Include="SQL\SqlConn.cs" />
+    <EmbeddedResource Include="DetailedFunctionalities\HandleDuplicateRows.byn-ER.resx">
+      <DependentUpon>HandleDuplicateRows.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailedFunctionalities\HandleDuplicateRows.ja.resx">
+      <DependentUpon>HandleDuplicateRows.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailedFunctionalities\HandleDuplicateRows.resx">
+      <DependentUpon>HandleDuplicateRows.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailedFunctionalities\IntranetDataDownload\DownloadTable.resx">
+      <DependentUpon>DownloadTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailedFunctionalities\IntranetDataDownload\PythonConfig.resx">
+      <DependentUpon>PythonConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailedFunctionalities\MES\MES_Manage_New.resx">
+      <DependentUpon>MES_Manage_New.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailedFunctionalities\MES\MES_Manage.resx">
+      <DependentUpon>MES_Manage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailedFunctionalities\MES\PythonConfig.resx">
+      <DependentUpon>PythonConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailedFunctionalities\MouseClickProgram\ClickSettingForm.resx">
+      <DependentUpon>ClickSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailedFunctionalities\ProcessControl.resx">
+      <DependentUpon>ProcessControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailedFunctionalities\Windchill登陆器\WindchilLogin.resx">
+      <DependentUpon>WindchilLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainControl\ControlPanel.resx">
+      <DependentUpon>ControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="alpha_blue_p.ico" />
+    <Content Include="AppIcon.ico" />
+    <Content Include="DetailedFunctionalities\HTMLCase\HTML5全局属性data-属性.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\HTML5全局属性：contentEditable属性.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\HTML5全局属性：contextmenu属性.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\HTML5全局属性：spellcheck属性.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\HTML5全局属性：translate属性.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\test.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\使用CSS美化HTML5文档.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\使用HTML5结构化元素-原始方法id.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\使用HTML5结构化元素-新增的结构化元素.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\构建HTML5结构-设计博客结构.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\构建HTML5结构_设计主体结构_定义侧边栏_示例1.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\构建HTML5结构_设计主体结构_定义内容块_示例1.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\构建HTML5结构_设计主体结构_定义内容块_示例2.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\构建HTML5结构_设计主体结构_定义内容块_示例3.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\构建HTML5结构_设计主体结构_定义内容块_示例4.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\构建HTML5结构_设计主体结构_定义文章块_示例1.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\构建HTML5结构_设计主体结构_定义文章块_示例2.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\构建HTML5结构_设计主体结构_定义文章块_示例3.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\案例：设计HTML5页面.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\结构元素-示例1.html" />
+    <Content Include="DetailedFunctionalities\HTMLCase\结构元素-示例2.html" />
+    <Content Include="Icons\AppIcon.ico" />
+    <Content Include="Icons\TileLabels.svg" />
+    <Content Include="Resources\1.gif" />
+    <None Include="Resources\1.jpg" />
+    <Content Include="Resources\10.jpg" />
+    <Content Include="Resources\11.gif" />
+    <Content Include="Resources\12.gif" />
+    <Content Include="Resources\13.png" />
+    <Content Include="Resources\14.gif" />
+    <Content Include="Resources\15.gif" />
+    <None Include="Resources\16.jpg" />
+    <Content Include="Resources\16.png" />
+    <Content Include="Resources\17.jpg" />
+    <Content Include="Resources\18.jpg" />
+    <Content Include="Resources\19.gif" />
+    <Content Include="Resources\2.jpg" />
+    <Content Include="Resources\20.gif" />
+    <Content Include="Resources\21.gif" />
+    <Content Include="Resources\22.png" />
+    <Content Include="Resources\23.jpg" />
+    <Content Include="Resources\24.jpg" />
+    <Content Include="Resources\25.gif" />
+    <Content Include="Resources\26.gif" />
+    <Content Include="Resources\27.jpg" />
+    <Content Include="Resources\28.gif" />
+    <Content Include="Resources\29.gif" />
+    <Content Include="Resources\3.gif" />
+    <Content Include="Resources\30.gif" />
+    <Content Include="Resources\31.jpg" />
+    <Content Include="Resources\32.gif" />
+    <Content Include="Resources\33.jpg" />
+    <Content Include="Resources\34.gif" />
+    <Content Include="Resources\35.gif" />
+    <Content Include="Resources\36.gif" />
+    <Content Include="Resources\37.gif" />
+    <Content Include="Resources\38.jpg" />
+    <Content Include="Resources\39.jpg" />
+    <Content Include="Resources\4.jpg" />
+    <Content Include="Resources\40.jpg" />
+    <Content Include="Resources\41.gif" />
+    <Content Include="Resources\42.jpg" />
+    <Content Include="Resources\43.jpg" />
+    <Content Include="Resources\44.jpg" />
+    <Content Include="Resources\45.jpg" />
+    <Content Include="Resources\46.jpg" />
+    <Content Include="Resources\47.jpg" />
+    <Content Include="Resources\48.jpg" />
+    <Content Include="Resources\49.jpg" />
+    <Content Include="Resources\5.gif" />
+    <Content Include="Resources\50.jpg" />
+    <Content Include="Resources\51.jpg" />
+    <Content Include="Resources\52.jpg" />
+    <Content Include="Resources\53.jpg" />
+    <Content Include="Resources\54.jpg" />
+    <Content Include="Resources\55.gif" />
+    <Content Include="Resources\56.gif" />
+    <Content Include="Resources\57.gif" />
+    <Content Include="Resources\58.gif" />
+    <Content Include="Resources\59.gif" />
+    <Content Include="Resources\6.gif" />
+    <Content Include="Resources\60.gif" />
+    <Content Include="Resources\60.jpg" />
+    <Content Include="Resources\61.jpg" />
+    <Content Include="Resources\7.jpg" />
+    <Content Include="Resources\8.gif" />
+    <Content Include="Resources\9.jpg" />
+    <Content Include="Resources\太酷啦.jpg" />
+    <Content Include="Resources\收到.jpg" />
+    <None Include="Resources\alpha_blue_p.ico" />
+    <None Include="Resources\selecttool_16x16.png" />
+    <None Include="Resources\documentproperties_16x16.png" />
+    <None Include="Resources\properties_32x32.png" />
+    <None Include="Resources\treemap.svg" />
+    <None Include="Resources\filterquery.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DetailedFunctionalities\PLMProcessConfirm\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

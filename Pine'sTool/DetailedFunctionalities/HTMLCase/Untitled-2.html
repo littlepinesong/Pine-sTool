@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>表格单元格文本截断示例</title>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+    .truncate-text {
+        max-width: 150px; /* 最大宽度 */
+        white-space: nowrap; /* 不换行 */
+        overflow: hidden; /* 隐藏溢出部分 */
+        text-overflow: ellipsis; /* 添加省略号 */
+    }
+</style>
+</head>
+<body>
+
+<h2>表格单元格文本截断示例</h2>
+
+<table>
+  <tr>
+    <th>姓名</th>
+    <th>年龄</th>
+    <th>介绍</th>
+  </tr>
+  <tr>
+    <td>张三</td>
+    <td>25</td>
+    <td><span class="truncate-text">这是一个很长的介绍文本，用来演示在表格单;zslgnkzjhvk;jzxhvkzxjhvklzjxhblkzhxbklzjxhzjkxhbkljzxhbklzxhbvjkzxhbvzxjhv;kJzxhvjlkzhbvzjhlxf元格中如何截断并添加省略号。</span></td>
+  </tr>
+</table>
+
+<script>
+// 获取所有带有.truncate-text类的元素
+const truncateElements = document.querySelectorAll('.truncate-text');
+
+truncateElements.forEach(element => {
+    // 获取元素的实际高度和最大高度
+    const elementHeight = element.clientHeight;
+    const maxHeight = parseInt(window.getComputedStyle(element).maxHeight);
+
+    // 如果元素的实际高度大于最大高度，则进行截断处理
+    if (elementHeight > maxHeight) {
+        const text = element.textContent;
+        let truncatedText = text;
+
+        // 使用二分法逐步截断文本，直到符合最大高度为止
+        let low = 0;
+        let high = text.length - 1;
+
+        while (low <= high) {
+            const middle = Math.floor((low + high) / 2);
+            const truncated = text.substr(0, middle + 1) + '...';
+
+            element.textContent = truncated;
+            if (element.clientHeight <= maxHeight) {
+                truncatedText = truncated;
+                low = middle + 1;
+            } else {
+                high = middle - 1;
+            }
+        }
+
+        // 设置最终截断后的文本内容
+        element.textContent = truncatedText;
+    }
+});
+</script>
+
+</body>
+</html>

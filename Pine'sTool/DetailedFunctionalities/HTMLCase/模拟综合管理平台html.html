@@ -1,0 +1,576 @@
+<html class=" x-viewport"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>衡变公司综合管理平台</title>
+<link rel="stylesheet" href="/css/themes/default/title.css" type="text/css">
+
+
+
+<script type="text/javascript">
+if(typeof LBUI == 'undefined')
+		LBUI = {};
+LBUI.locale={"name":"zh_CN","variant":"","lang":"zh","country":"CN"}
+</script>
+<link rel="stylesheet" type="text/css" href="/yui/ext3_1_1/resource/css/lb-ext-all.css?t=20170725">
+<script type="text/javascript" src="/yui/ext3_1_1/ext-base.js?t=20170725" charset="utf-8"></script>
+<script type="text/javascript" src="/yui/ext3_1_1/ext-all.js?t=20170725" charset="utf-8"></script>
+<script type="text/javascript" src="/yui/ext3_1_1/lb-ext.js?t=20170725" charset="utf-8"></script>
+<script type="text/javascript" src="/yui/ext3_1_1/lb-app.js?t=20170725" charset="utf-8"></script>
+<script type="text/javascript" src="/yui/ext3_1_1/ActionColumn.js?t=20170725" charset="utf-8"></script>
+<script type="text/javascript" src="/yui/ext3_1_1/ext-lang-zh_CN.js?t=20170725" charset="utf-8"></script>
+<link rel="stylesheet" href="/css/themes/default/xtheme.css?t=20170725" type="text/css">
+<script type="text/javascript">Ext.onReady(function () {Ext.QuickTips.init();var quickTip = Ext.QuickTips.getQuickTip();Ext.apply(quickTip, {gridColumnTipMinLength:1,interceptGridColumnTitle:true,maxWidth:400,dismissDelay:5000,minWidth:30,showDelay:50,hideDelay:500, hide: function(){if (this.hidenAble === false)return;delete this.activeTarget;Ext.QuickTip.superclass.hide.call(this);}});})</script>
+
+
+
+<script language="javascript" src="/jsp/themeExt3/include/header.js"></script>
+ 
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/yui/ext3_1_1/resource/css/lb-history_bar.css">
+<script type="text/javascript" src="/yui/ext3_1_1/_source/lb-history_bar.js"></script>
+<script type="text/javascript">
+    //初始，系统配置
+    window.LBUI_HistoryBar_config({
+        SHOW_TEXT_LEN:parseInt('8') || 8,
+        //如果标签过长，增加相应的字串，如...
+        TEXT_OVER_APPEND:'',
+        TAB_LIMIT_KEY:"historytabbar.tag_count",
+        //限制条数，可由用户定义
+        TAB_LIMIT:parseInt('5') || 5,
+        TAB_OVER_LIMIT_REPLACE_KEY:"historytabbar.over_select",
+        //如果超出限制，是否替换当前的标签页
+        TAB_OVER_LIMIT_REPLACE:'true' == 'true',
+        CONFIG_URL:'/UIProcessor?Table=USER_CENTER&EVENT_SOURCE=AppConfigProcessor&mod=single_save',//应用配置保存的url
+        //当菜单点下去时，如果没有配置重新加载，自动判断
+        MENU_CLICK_RELOAD:'false'
+    });
+    window.LBUI_HistoryBar_enabled=true;
+</script>
+
+
+<script type="text/javascript">
+Ext.ns('LBUI.title');
+Ext.onReady(function(){
+		Ext.QuickTips.init();
+        Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
+    var menuData = [
+        {text:'首页',menu:{items:[{text:"首页",handler:window.LBUI_HistoryBar_active,url:"/jsp/portal/home.jsp",id:'2',qtip:"首页"}
+]}
+ },{text:'内部信息',menu:{items:[{text:"现场管理",id:'4',menu: {items:[{text:"安全检查",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=T_awh",id:'8'}
+]}}
+,'-',{text:"外出查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=CCSP_T_V1",id:'23'}
+,{text:"质保信息联络单",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=ZBXXLLD&ObjDescribe=CPQf16MaymDzBKuhfzyARJOPXkMsxiih",id:'52',qtip:"质保信息联络单页面"}
+,{text:"政策信息视图",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=ZCXX_ZCXXST&ObjDescribe=kMpchjEBQvXLRs0dD6d6hA7KY1YoqyRo",id:'78',qtip:"政策信息视图"}
+]}
+ },{text:'通用管理',menu:{items:[{text:"个人信用记录",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=asp_fzc040t_V2",id:'81'}
+,{text:"个人工资查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=hdf020v1_pc_v",id:'82'}
+,{text:"加班工资查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=VO_JBGZCX&ObjDescribe=sQHna913NnEfu*nltRBYOqPEe*P6rj6n",id:'83',qtip:"加班工资查询"}
+,{text:"年终奖励查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=View_NZJLHZSJ&ObjDescribe=gd62k6GwL7iIJ48Zz8LY2aPEe*P6rj6n",id:'84',qtip:"年终奖励汇总数据"}
+,{text:"个人考勤刷卡查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=TA_Natural_Sql268",id:'85'}
+,{text:"非ERP工资查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=wage_detail_sql02_V1",id:'87'}
+,{text:"最新个人往来余额",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=asp_fza060t_tbea_tmp_V4",id:'88'}
+,{text:"ERP用户名查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=rlzy_erpyhmSql604&ObjDescribe=jETxswE0WuCCHmwfYNUZ5qPEe*P6rj6n",id:'89'}
+,{text:"规章制度查看",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=gzzd_main_v12",id:'90'}
+,{text:"设备制度查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=Tsb060t_V1",id:'94'}
+,{text:"生产计划查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=sc_week_plan_v1",id:'95'}
+,{text:"报缺报修",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=ComposedPage117",id:'96'}
+,{text:"我的班组文档",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=CJBZ_FILE_V2",id:'99'}
+,{text:"工装设备_车间",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=GZ_GZSB_ST2",id:'101'}
+,{text:"生日查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=haa010t_view_ERP_SQL_V1",id:'103'}
+,{text:"公司外网站维护记录",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=webLog_v&ObjDescribe=zNoGzpCMwAD0R0sLFZMYH8O-cLncB6VCYCZnLdmty0s.",id:'105'}
+,{text:"技术资料",id:'106',menu: {items:[{text:"技术资料",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=jszl_da010t_v1",id:'107'}
+,{text:"技术资料权限授权",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=jszl_qxsq",id:'108'}
+,{text:"技术资料权限授权变更记录",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=jszl_qxsq_edit",id:'109'}
+]}}
+,{text:"部门出门审批",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=ygcm_bm_xnb&ObjDescribe=EZXE7a1NbjJ08zkYYCemDx74cNwkgZtS",id:'112'}
+,{text:"个人考勤刷卡记录",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=SQL_GRKQSKJL&ObjDescribe=E4wsT1H0bB3oOoeILqATQRve07SRa4BU6UdCFoN95hk.",id:'113',qtip:"个人考勤刷卡记录"}
+,{text:"内部文件传递及查看",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=View_WJCD&ObjDescribe=ud*5OoU*9RsminvGDEf4ZLXWNNnp99XfrrcOwUcKXTc.",id:'114',qtip:"内部文件传递及查看"}
+,{text:"问题提报平台",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=View_XXSBBX&ObjDescribe=A6TZqnntG08N3sDjWQ2svm3nICfTafmC",id:'115',qtip:"信息设备报修"}
+]}
+ },{text:'集团管控',menu:{items:[{text:"报错信息",id:'240',menu: {items:[{text:"采购订单同步错误",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=wwwscm_tb_cw_hz_cg_V1&ObjDescribe=q*QfgJbW1KtJtqL8rIH-gpgFaHqeK1vCewRkoHYX57s.",id:'241'}
+,{text:"采购订单同步错误品目汇总SQL",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=wwwscm_tb_cw_hz_cg_sql2&ObjDescribe=q*QfgJbW1KtJtqL8rIH-gpgFaHqeK1vCidismGAT6w8-XGfwHYGEj1V-PDEsgaqr",id:'242'}
+,{text:"BOM树同步异常汇总",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=CUX_PLM_CP_BOM_ctrl_T_v1&ObjDescribe=0jxsHtksnJH2VtCpf*SO5Aro9*YkNB**OLDq3jLl1m8.",id:'243'}
+]}}
+]}
+ },{text:'营销协同',menu:{items:[{text:"客户服务管理",id:'299',menu: {items:[{text:"出厂产品资料",id:'303',menu: {items:[{text:"图纸资料明细登记",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=DA_out_file03_chd_V2",id:'304'}
+,{text:"生产号资料明细登记",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=DA_out_file03_chd_V3",id:'305'}
+,{text:"出厂资料查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=DA_out_file03_chd_V1",id:'306',qtip:"出厂资料明细查询"}
+,'-',{text:"产品登记",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=DA_out_file03_V1&ObjDescribe=sdc6gseOKtmiODXofBrGbg..",id:'308'}
+,{text:"模板登记",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=DA_out_file01_V1",id:'309'}
+]}}
+]}}
+,{text:"运输管理",id:'316',menu: {items:[{text:"运输招标计划申请",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=ys_zbplan_sq_v1&ObjDescribe=AiL3LEOpnY5iZFVFYffMo1R4mz6VSwmQRvqW7j9RM4A.",id:'340'}
+,{text:"运输招标计划申请设计确认",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=ys_zbplan_sq_sj_v1&ObjDescribe=AiL3LEOpnY5iZFVFYffMo1R4mz6VSwmQ0OQLBr0KNtr*e9LOLP5Vgw..",id:'342'}
+]}}
+,'-',{text:"出厂号查询(停用)",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=PBB010T_Sql742T",id:'355'}
+,{text:"出厂序列号查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=SQL_sc_pbb010t_lot_no_v1&ObjDescribe=NJIA3Y6IvZQza65NmkGI9vW6fhDOuFwE",id:'356',qtip:"出厂序列号查询"}
+]}
+ },{text:'采购管理',menu:{items:[{text:"检查采购计划",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=sc_pbb010t_V2",id:'379'}
+,{text:"报表查询",id:'406',menu: {items:[{text:"采购查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=cg_lookup_v66",id:'407'}
+]}}
+]}
+ },{text:'库存管理',menu:{items:[{text:"库存管理",id:'442',menu: {items:[{text:"物料编码对照",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=erpjywznx",id:'448'}
+,{text:"二级品目编码",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_gylx_gz_ej_v1",id:'451'}
+]}}
+]}
+ },{text:'生产管理',menu:{items:[{text:"生产管理",id:'520',menu: {items:[{text:"生产计划管理",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=sc_pbb010t_V1",id:'522'}
+,{text:"报表查询",id:'538',menu: {items:[{text:"ERP已删除生产号",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=sc_pbb010t_del_from_erp_v1",id:'540'}
+,{text:"设计图号修改记录",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=sc_pbb010t_mod_his",id:'541'}
+,'-',{text:"生产计划时间修改查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=sc_pbb010t_sj_his_v3",id:'543'}
+,{text:"图纸实际下发情况表",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=tzxf_x",id:'545'}
+,{text:"工艺定额编制情况表",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=gydex",id:'546'}
+,{text:"主材单统计",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=zcd_tj_view",id:'547'}
+,{text:"采购订单下发情况",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=ddxfqkx",id:'548'}
+]}}
+]}}
+,{text:"BOM管理",id:'558',menu: {items:[{text:"设计管理",id:'559',menu: {items:[{text:"设计下图登记",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_xtdjth_xnb",id:'561'}
+,{text:"主材单来图登记",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=zcdlt_dj_v",id:'562'}
+,{text:"图纸及定额下发查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_xtdj_p_w_v1",id:'563'}
+,{text:"主材与明细一致性校验",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_cgd_sel",id:'564'}
+,{text:"蝶阀波纹管主材明细分析",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_zcd_diefa_thsel_xnb",id:'565'}
+,{text:"生产计划设计图号确认",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=sc_pbb010t_V1_sjth_qr",id:'567'}
+,{text:"电气技术协议",id:'568',menu: {items:[{text:"电气技术协议查看",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=dq_jsxy_view_t1",id:'570'}
+,{text:"协议查看人员设置",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=dq_cylxr",id:'571'}
+]}}
+,'-',{text:"Wind未检入部件",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=BOM_SJ_WJRBJ_VIEW",id:'573'}
+,{text:"同步ERP名称例外",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_gylx_gz_same_erp",id:'574'}
+,{text:"主材单系统设置",id:'575',menu: {items:[{text:"线规规则",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=xggz_mc",id:'576'}
+]}}
+]}}
+,{text:"工艺处理",id:'579',menu: {items:[{text:"中间表同步情况",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=V_bom_plm_bigpart",id:'580'}
+,{text:"PLM工艺BOM树",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=V_bom_plm_gydesql",id:'582'}
+,'-',{text:"问题信息汇总",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=wtxxb_view",id:'589'}
+]}}
+,{text:"基础数据设置",id:'594',menu: {items:[{text:"产品型号图样分析",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_cpxh_tyfx_xnb",id:'604'}
+,{text:"产品部件图样分析",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=cpbj_tyfx_xnb",id:'605'}
+,{text:"特征号管理",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_tzh_ComposedPage231&ObjDescribe=KcqU9l3udOv5TaiaFapcOezCt0TaZ*eH",id:'606'}
+,{text:"产品型号分类",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=cpxhflNew",id:'607'}
+,{text:"产品型号字典",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_cpxh_bz_xnb",id:'608'}
+,{text:"产品型号运输台账",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_cpxh_cstz_xnb",id:'609'}
+,{text:"产品型号投标台账",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_cpxh_tbcs_xnb",id:'610'}
+,{text:"产品型号绝缘台账",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_cpxh_jycs_xnb",id:'611'}
+,{text:"产品型号客服台账",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_cpxh_kfcs_xnb",id:'612'}
+,{text:"PLM通用件图号目录",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=V_plm_tyjml",id:'615'}
+,{text:"通用件变型件情况",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=V_tyj_bxj_fx",id:'616'}
+,{text:"工艺路线规则2",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_gylx_gz_v1",id:'617'}
+,{text:"元部件字典",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_gylxgz_ybj_xnb",id:'618'}
+]}}
+]}}
+,{text:"车间作业管理",id:'620',menu: {items:[{text:"生产主计划",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=plan_v",id:'621'}
+,{text:"生产周计划",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=ComposedPage586_zjh&ObjDescribe=d8JINeu7LBAz8cu9gY28eEn0g6W8Za*j",id:'624'}
+,{text:"车间班组作业",id:'629',menu: {items:[{text:"车间工步划分(PLM)",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=skp_scjhgb_v1",id:'632'}
+,{text:"车间作业单(派工)",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=SCJH_CJZYD_XNB",id:'633'}
+]}}
+]}}
+,'-',{text:"包装管理",id:'713',menu: {items:[{text:"产品拆卸",id:'714',menu: {items:[{text:"拆卸件条码打印",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=SC_CXMX_VW",id:'730'}
+]}}
+]}}
+,'-',{text:"班组承包",id:'824',menu: {items:[{text:"班组承包分工明细",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=T566",id:'825'}
+,{text:"我的班组成员",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=CJGZ_USER_ID_V2",id:'827'}
+,{text:"班组成本",id:'830',menu: {items:[{text:"领用申请登记",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bzcb_month_Sql779T",id:'834'}
+]}}
+]}}
+]}
+ },{text:'设计管理',menu:{items:[{text:"设计计划",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=ComposedPage185",id:'866'}
+,{text:"主材图纸下发",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=sjjh_tjhz",id:'867'}
+,{text:"采购单测算",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=cgdcs_tbcx_xnb&ObjDescribe=q*QfgJbW1KvWf1xAQS9y2otNi9tYs**Y",id:'868'}
+,{text:"出厂资料查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=DA_out_file03_chd_V1&ObjDescribe=NJIA3Y6IvZS9t2vB57AQTaPEe*P6rj6n",id:'870'}
+,{text:"图号比较",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=erp_zjd_T107",id:'872'}
+,{text:"变压器重量管理",id:'873',menu: {items:[{text:"变压器重量计算",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=ComposedPage425&ObjDescribe=mFhZKT8d-plBdQPLFeApFSPjqxYsbH6G",id:'874'}
+,{text:"变压器油计算基础数据",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=byq_ComposedPage640",id:'875'}
+]}}
+,{text:"车间周计划查看",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=zjhck_xnb&ObjDescribe=47i4gdM8aSQz8cu9gY28eCDBJ7bmxQge",id:'877'}
+,{text:"设计文档",id:'879',menu: {items:[{text:"设计文档管理",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=ComposedPage458&ObjDescribe=xrCpJ4ipmqcnY8VFrt9YPcYsFqd6ymF2",id:'880',qtip:"设计文档管理"}
+]}}
+,{text:"负责人及图号查询",id:'883',menu: {items:[{text:"图号及型号修改记录",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=sjjh_thbg_xnb&ObjDescribe=AWYq3IUjNlZyTK8h8BjZ7TAgCP0*7EwVYCZnLdmty0s.",id:'886'}
+]}}
+,{text:"设计采购单查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_cgd_selectth_xnb",id:'887'}
+,{text:"主材采购单主页",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_scmx_v_zcd_v4",id:'888'}
+,{text:"端子号查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=hbtq_data_duanzi_v2&ObjDescribe=3rVqZlqPF6GkzcafADsiphfAl9mLRyE7",id:'889'}
+,{text:"通用件分析",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_th_bz_fx_v1&ObjDescribe=eP3NTSAWGxIy3Z52wGu8C2-xjqlZEac8",id:'890'}
+]}
+ },{text:'项目公司',menu:{items:[{text:"采购单测算",id:'939',menu: {items:[{text:"生产计划设计图号确认",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=sc_pbb010t_V1_sjth_qr&ObjDescribe=d8JINeu7LBDtYiChWreeLf*35g*vRkKY2aCIfEnGtkN-ZdkLSP2Iiw..",id:'953'}
+]}}
+,{text:"质量管理",id:'979',menu: {items:[{text:"湖南电气出厂文件",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=da_out_sub&ObjDescribe=wu99N65wJaAHYL9Y4iMAz9oK0NgyR6T2PCem6o*rwak.",id:'981'}
+]}}
+]}
+ },{text:'质量管理',menu:{items:[{text:"例外放行管理",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=lwfx_gl_ComposedPage&ObjDescribe=HUETSSi-mO*hKWBKnGUzlcYsFqd6ymF2",id:'1091'}
+]}
+ },{text:'党政管理',menu:{items:[{text:"印章管理",id:'1100',menu: {items:[{text:"印章刻制",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=yzkz_ComposedPage&ObjDescribe=f1o6ya9NIVjwP4qHOp9Vag..",id:'1101'}
+,{text:"印章借用",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=yzjy_ComposedPage&ObjDescribe=f1o6ya9NIVgTI1yQiI2Jfw..",id:'1102'}
+,{text:"印章盖章",id:'1103',menu: {items:[{text:"衡变本部盖章",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=dgtz_gzComposedPage&ObjDescribe=VOZ24*5s2Xj*3Rl2aYZXshjOhPuP*TsV",id:'1104'}
+,{text:"项目公司盖章",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=xmgs_gzComposedPage&ObjDescribe=4QYP8U0qJT7v*BDOhPTS6xjOhPuP*TsV",id:'1105'}
+,{text:"基础数据维护",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=yzgzlc_jcsjwhComposedPage&ObjDescribe=gK-JcGMcHxQvMEgZiubu78IV1hgOkpJM",id:'1106'}
+]}}
+]}}
+,{text:"印章刻制",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=yzkz_T&ObjDescribe=f1o6ya9NIVjwP4qHOp9Vag..",id:'1108'}
+,{text:"印章借用",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=yzjy_T&ObjDescribe=f1o6ya9NIVgTI1yQiI2Jfw..",id:'1109'}
+,{text:"衡变本部盖章",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=yzgz_dgtz_T&ObjDescribe=VOZ24*5s2Xj*3Rl2aYZXshjOhPuP*TsV",id:'1110'}
+,{text:"项目公司盖章",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=xmgs_gzT&ObjDescribe=4QYP8U0qJT7v*BDOhPTS6xjOhPuP*TsV",id:'1111'}
+,{text:"接待管理",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=ComposedPage624&ObjDescribe=dxcHs6DOTwxpvu5vwxksWg..",id:'1113'}
+]}
+ },{text:'人力资源',menu:{items:[{text:"衡变绩效管理",id:'1121',menu: {items:[{text:"绩效考核",id:'1122',menu: {items:[{text:"考核通报",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=T122",id:'1123'}
+]}}
+]}}
+,'-',{text:"荣誉证书",id:'1185',menu: {items:[{text:"个人信息",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=T265",id:'1191'}
+]}}
+,{text:"人员照片",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=haa010t_photo",id:'1192'}
+,{text:"人事档案管理",id:'1194',menu: {items:[{text:"离职人员汇总",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=lzryhz_v2",id:'1206'}
+]}}
+,{text:"门禁考勤管理",id:'1209',menu: {items:[{text:"出门证管理",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=ComposedPage329&ObjDescribe=WPL4H5-lYsdS8XNVYUZ6uuzCt0TaZ*eH",id:'1210'}
+,{text:"考勤查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=ComposedPage288_kq&ObjDescribe=OZlUqyL-12QRhThT7Wvx5g..",id:'1211'}
+,{text:"考勤处理",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=kq_ComposedPage308&ObjDescribe=OZlUqyL-12TN-SC5*BJhXQ..",id:'1212'}
+,{text:"月度考勤处理",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=yd_kqComposedPage359&ObjDescribe=JlwdBDCwkDmXGF3bfH9NVfa*SCFaXb21",id:'1215'}
+]}}
+,{text:"360度绩效考评",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=ComposedPage766",id:'1239'}
+,{text:"专项扣除信息采集",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=VO_ZZRYXX&ObjDescribe=Crp1TsbN1XSZ6rdE8s0KiAdkgTTXXHDDETPu9kz4le4.",id:'1242',qtip:"在职人员信息"}
+,{text:"奖励管理",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=RLZY_JLGL&ObjDescribe=xlMG2hEQmvRpvu5vwxksWg..",id:'1245',qtip:"奖励管理"}
+]}
+ },{text:'资产管理',menu:{items:[{text:"货物进出门系统",id:'1248',menu: {items:[{text:"货物进出门（开票）",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=Goods030t",id:'1250'}
+,'-',{text:"货物进出门（审核）",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=Goods040t",id:'1252'}
+]}}
+,'-',{text:"设备管理",id:'1266',menu: {items:[{text:"设备管理",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=sbwx_ComposedPage181&ObjDescribe=sLDCnWdo569pvu5vwxksWg..",id:'1267'}
+]}}
+]}
+ },{text:'财务成本管理',menu:{items:[{text:"成本查询",id:'1441',menu: {items:[{text:"采购单测算",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=cgdcs_tbcx_xnb",id:'1461'}
+]}}
+]}
+ },{text:'基础数据',menu:{items:[{text:"AD域",id:'1668',qtip:"AD域",menu: {items:[{text:"域管理人员信息(个人)",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=View_YGLRYXXGRCS&ObjDescribe=4uh4tBHZZJkQEJjC9eIjcZBO5qELJLRShkcY5h4muEc.",id:'1669',qtip:"域管理人员信息(个人)最终版"}
+]}}
+]}
+ },{text:'工作流系统',menu:{items:[{text:"我的任务",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=WORKFLOW_TOTASKS",id:'1691',qtip:"我的任务"}
+]}
+ },{text:'系统管理',menu:{items:[{text:"集团工号查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=lhsjtgh_cxSql&ObjDescribe=XK3Ns*uN0j6vwYRHp8SXRaPEe*P6rj6n",id:'1723'}
+,{text:"历史菜单",id:'1724',menu: {items:[{text:"0712删除菜单",id:'1786',menu: {items:[{text:"工艺定额树构建",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=P_BOM_GYDE_MX_tree_T",id:'1787'}
+,{text:"主材采购单",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_cgd_v1",id:'1788'}
+,{text:"设计导入记录",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=sql164_sjdrjl_T167",id:'1806'}
+]}}
+,'-',{text:"我要评论",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=tBlogComment",id:'1866',qtip:"我要评论"}
+,'-',{text:"待删除",id:'1960',menu: {items:[{text:"密封件一览表(待删除)",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=BOM_GYDE_V6",id:'1965'}
+,'-',{text:"工艺定额汇总表",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=BOM_GYDE_BJHZ_v1",id:'1969',qtip:"工艺定额汇总表"}
+]}}
+]}}
+]}
+ },{text:'绩效管理',menu:{items:[{text:"图纸及定额下发查询",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=bom_xtdj_p_w_v1",id:'2033'}
+]}
+ },{text:'历史菜单',menu:{items:[{text:"网上调查",id:'2140',menu: {items:[{text:"360度绩效考评",id:'2163',menu: {items:[{text:"我的考评",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=ZG_CPJG_new_v1",id:'2164'}
+]}}
+]}}
+,{text:"主材单号",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=zcd_sj_v1",id:'2184'}
+,{text:"主材单项号",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=ZCD_SJ_XH001",id:'2191'}
+,{text:"主材单编制",handler:window.LBUI_HistoryBar_active,url:"/UIProcessor?Table=zcd_ceshi_V_001",id:'2193'}
+]}
+ }   ];
+        var viewport = new Ext.Viewport({
+            layout: 'border',
+
+            items:[
+            
+                { region:'east',width:36, layout:'vbox',  border:false
+                    ,         margins: '0 0 0 0',
+                    layoutConfig:{
+                        align:'stretch',
+                        pack:'start'
+                    },
+                    items:[
+                        {cls:'lb-tab-body',bodyStyle:{background:'none'},
+                            html:'<div class="lb-tab-box"><a class="lb-tab-up"' +
+                                ' onclick="LBUI_HistoryBar_up.call(this)"></a></div>'
+                            , border:false, height:25
+                        },
+                        {cls:'lb-tab-body',bodyStyle:{background:'none'}
+                            ,html:'<div class="lb-tab-main-box" dir="main-box">'+
+                                '<div class="lb-tab-box" dir="main"></div></div>',
+                            border:false, flex:1},
+                        {cls:'lb-tab-body',bodyStyle:{background:'none'},
+                            html:'<div class="lb-tab-box"><a class="lb-tab-down" ' +
+                                ' onclick="LBUI_HistoryBar_down.call(this)"></a><a class="lb-tab-down" style="background-image: url(/images/work.gif)" ' +
+                                    ' onclick="LBUI_HistoryBar_setting.call(this)"></a></div>'
+                            , border:false, height:43
+                            }
+                    ] },
+                {
+                            region:'north',
+                            contentEl:'header',
+                            height: 88,
+                            minHeight:88,
+                            maxHeight: 88,
+                            collapsible:true,
+                            collapseMode:'mini',
+                            frame:false,
+                            header:false,
+                            footer:false,
+                            border:false,
+                            id:'titlebar',
+                            bbar:{
+                                cls:'lb-main-tb',
+                                items:menuData}
+                        },
+                        {
+                            region:'center',
+                            shim:false,        border:false,
+                            html:'<IFRAME name="fraRightFrame" FRAMEBORDER="no" bordercolor="#FFFFFF" src="/jsp/portal/home.jsp"  scrolling="auto" width="100%" height="100%"></IFRAME>'
+                            
+                        }
+
+            ]
+        });
+
+    
+    //active first page
+    Ext.get(viewport.el.select('iframe[name="fraRightFrame"]').elements[0]).on('load', function () {
+        var iframe = viewport.el.select('iframe[name="fraRightFrame"]').elements[0];
+        Ext.get(iframe).un('load', arguments.callee);        //load once
+        var homePage = '/jsp/portal/home.jsp';
+        var bbar = viewport.get('titlebar').getBottomToolbar();
+        var foundItem = function (mixedCollection, func) {
+            for (var i = 0; i < mixedCollection.items.length; i++) {
+                var item = mixedCollection.items[i];
+                var ret = func(item);
+                if (ret)return ret;
+                if (item.menu && item.menu.items) {
+                    ret = foundItem(item.menu.items, func);
+                    if (ret)return ret;
+                }
+            }
+        };
+        var firstPageInfo;   //查询默认的主页对应的页面
+        firstPageInfo = foundItem(bbar.items, function (item) {
+            if (homePage.indexOf(item.url || item.href) != -1) { //匹配主页
+                return item;                            //item.text &&
+            }
+        });
+        if (!firstPageInfo) {  //写一个标签上去。不取第一页
+            try {
+                var title;
+                //try workflow title
+                try {
+                    var wftitle = iframe.contentWindow.document.getElementById('titleBarDiv').getElementsByTagName('h1')[0];
+                    title = wftitle.textContent || wftitle.innerText;
+                } catch (e) {
+                }
+                if (!title) {//use document title instance.
+                    title = iframe.contentWindow.document.title || ' ';
+                }
+                title = title.replace(self.document.title, '').replace(/^\s|\s$/, '');
+                while (title.indexOf('-') == 0)title = title.substring(1);
+                firstPageInfo = {url:homePage, text:title, title:title, href:homePage};
+            } catch (e) {
+            }
+        }
+        if(firstPageInfo){firstPageInfo.ignoreReload=true;}
+        (firstPageInfo && window.LBUI_HistoryBar_active && window.LBUI_HistoryBar_active(firstPageInfo));
+    });
+    
+    });
+
+    </script>
+</head>
+<body class="lb-layout-menu  ext-webkit ext-chrome lb-lang-zh_CN x-border-layout-ct x-window-maximized-ct " id="ext-gen12"><div id="ext-comp-1004" class=" x-panel x-panel-noborder x-border-panel" style="width: 36px; left: 2524px; top: 88px;"><div class="x-panel-bwrap" id="ext-gen21"><div class="x-panel-body x-panel-body-noheader x-panel-body-noborder x-box-layout-ct" id="ext-gen22" style="width: 36px; height: 1209px;"><div class="x-box-inner" id="ext-gen74" style="width: 36px; height: 1209px;"><div id="ext-comp-1005" class=" x-panel lb-tab-body x-panel-noborder x-box-item" style="width: 36px; left: 0px; top: 0px;"><div class="x-panel-bwrap" id="ext-gen75"><div class="x-panel-body x-panel-body-noheader x-panel-body-noborder" id="ext-gen76" style="background: none; height: 25px; width: 36px;"><div class="lb-tab-box"><a class="lb-tab-up" onclick="LBUI_HistoryBar_up.call(this)"></a></div></div></div></div><div id="ext-comp-1006" class=" x-panel lb-tab-body x-panel-noborder x-box-item" style="width: 36px; left: 0px; top: 25px;"><div class="x-panel-bwrap" id="ext-gen78"><div class="x-panel-body x-panel-body-noheader x-panel-body-noborder" id="ext-gen79" style="background: none; width: 36px; height: 1141px;"><div class="lb-tab-main-box" dir="main-box"><div class="lb-tab-box" dir="main" id="ext-gen89"><div close_able="true" dir="tabInfo" class="lb-tab-btn" href="/jsp/portal/home.jsp" id="ext-gen87"><div class="lb-tab-btn-left"><div class="lb-tab-btn-right"><div class="lb-tab-btn-m"><a class="  lb-tab-close-gray" id="ext-gen88"></a><span class="lb-tab-btn-text" title="首页">首页</span></div></div></div></div><div close_able="true" dir="tabInfo" class="lb-tab-btn-current" href="/UIProcessor?Table=DA_out_file03_chd_V1&amp;ObjDescribe=NJIA3Y6IvZS9t2vB57AQTaPEe*P6rj6n" id="ext-gen120"><div class="lb-tab-btn-left"><div class="lb-tab-btn-right"><div class="lb-tab-btn-m"><a class=" lb-tab-close-current" id="ext-gen121"></a><span class="lb-tab-btn-text" title="出厂资料查询">出厂资料查询</span></div></div></div></div></div></div></div></div></div><div id="ext-comp-1007" class=" x-panel lb-tab-body x-panel-noborder x-box-item" style="width: 36px; left: 0px; top: 1166px;"><div class="x-panel-bwrap" id="ext-gen81"><div class="x-panel-body x-panel-body-noheader x-panel-body-noborder" id="ext-gen82" style="background: none; height: 43px; width: 36px;"><div class="lb-tab-box"><a class="lb-tab-down" onclick="LBUI_HistoryBar_down.call(this)"></a><a class="lb-tab-down" style="background-image: url(/images/work.gif)" onclick="LBUI_HistoryBar_setting.call(this)"></a></div></div></div></div></div></div></div></div><div id="titlebar" class=" x-panel x-panel-noborder x-border-panel" style="left: 0px; top: 0px; width: 2560px;"><div class="x-panel-bwrap" id="ext-gen24"><div class="x-panel-body x-panel-body-noheader x-panel-body-noborder" id="ext-gen25" style="height: 55px; width: 2560px;"><div id="header">
+ 
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/yui/ext3_1_1/resource/css/notify-lb.css">
+
+ 
+<div id="collapseBtn" onclick="collapseTitlebar()" title="隐藏标题栏"></div>
+<div id="wrapper">
+	<div id="logo">
+	<h1>衡变公司综合管理平台</h1>
+	</div>
+	<table id="top_nav" style="left: 292px;"><tbody><tr>
+		<td><div id="notifyInc" class="bulletinIcoNew lb-bulletin " title="通知消息"><span class="number" id="ext-gen85">0</span></div></td><td><a href="/jsp/portal/home.jsp" target="fraRightFrame" style="outline:none;text-decoration:none;" onclick="window.LBUI_HistoryBar_active({text:'首页',url:this.href});return false;"><div id="home" class="homeIco" title="首页"></div></a></td><td><a href="/UIProcessor?Table=WORKFLOW_TOTASKS" target="fraRightFrame" style="outline:none;text-decoration:none;" onclick="window.LBUI_HistoryBar_active({text:'流程中心',url:this.href});return false;"><div id="bp" class="bpIco " title="流程中心"></div></a></td><td><div id="theme" class="themeIco " title="界面风格(默认风格)"></div></td><td id="ext-gen4" style="display: none;">
+			<div class="moreIco" id="moreIco"></div>
+		</td>
+		<td id="top_nav_anchor">
+			
+			<div class="top-line"></div>
+			<div class="global-search" id="globalSearch"><div class="x-form-field-wrap x-form-field-trigger-wrap" id="ext-gen7" style="width: 162px;"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="x-form-search-type-trigger x-search-type-left" id="ext-gen11"><input type="text" size="16" autocomplete="off" id="ext-comp-1001" name="ext-comp-1001" class=" x-form-text x-form-field x-form-search-field-text x-form-empty-field" style="width: 125px;"><span class="x-form-twin-triggers x-form-search-twin-triggers" id="ext-gen8"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="x-form-trigger x-form-clear-search-trigger" id="ext-gen9" style="display: none;"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="x-form-trigger x-form-go-trigger" id="ext-gen10"></span></div></div>
+						
+		</td>
+	</tr></tbody></table>
+	
+
+
+
+
+ 
+
+
+	<div id="user" class="user">
+		<div class="user-link "><ul id="userLinkCt"><li id="ext-gen5"><a class="style" href="javascript:doHelp();" hreftarget="">帮助</a></li><li id="ext-gen6"><a class="style last-link" href="/logout.do" hreftarget="_top">注销</a></li></ul></div>
+		<div class="user-name" id="userNameCt">喻小松</div>
+		<div class="photo-arrow" id="textMenu"></div>
+		<div class="photo-wrap" id="userPhotoCt"><img id="userPhoto" src="/Picture?dFVzZXIvUGhvdG8vOTEwOS8wLzE5MGEwOGNjNjE2" width="32" height="32" border="0" class="photo"></div>
+			<div style="clear:left;"></div>
+	</div>
+</div>
+
+<script type="text/javascript">	
+	LBUI.title.iconItems = [];
+	var textItems = LBUI.title.textItems = [{cls:"style", href:"javascript:LBUI.title.updateUserPhoto();", icon:"/images/icon/fam/user_edit.png",text:"更换头像",attribute:1},{cls:"style", href:"javascript:doChangeMyPassword();", icon:"/admin/images/mini/key.png",text:"修改密码",attribute:1},{cls:"style", href:"javascript:LBUI.userLockSession();", icon:"/yui/ext3/resource/images/default/grid/hmenu-lock.gif",text:"锁定界面",attribute:1},{cls:"style", href:"javascript:LBUI.setUnlockPwd();", icon:"/yui/ext3/resource/images/default/grid/hmenu-lock.gif",text:"解锁密码",attribute:1},{cls:"style", href:"javascript:showDialog('/MessageOperate.do');", icon:"/images/icon/doing.gif",text:"发送留言",attribute:1},{cls:"style", href:"javascript:doMsgConfig();", icon:"/images/icon/fam/user_comment.png",text:"配置消息",attribute:1},{cls:"style", href:"javascript:doHelp();", text:"帮助",attribute:0},{cls:"style", hrefTarget:"_top",  href:"/logout.do", text:"注销",attribute:0},{cls:"style", href:"javascript:showDialog('/plugins/app/configure.jsp',{width:400,height:500});", icon:"/plugins/app/images/phone.png",text:"手机设置",attribute:1}];
+	
+	
+
+ 
+
+LBUI.title.iconItems.push({id:'notifyInc',iconCls:'bulletinIcoNew',
+	 
+	hrefTarget:'fraRightFrame',text:LBUI.i18n.notification.tiptitle});
+
+  
+var notify = null ;
+var NotifyInc = {  
+	init : function(){ 
+	 
+	     LBUI.NotificationCenter.on('NoticeNotification',function(nt){  
+	    	   
+	     	  notify.setData(nt); 
+	     	  
+ 		},this);
+	}
+}; 
+   
+function NoitfyHide(){  
+	notify.hide();
+}
+ Ext.onReady(function(){
+	    notify = new LBUI.Notification(null); 
+		notify.render("notifyInc"); 
+	    NotifyInc.init();   
+	    Ext.getBody().un('click',NoitfyHide,this);
+	    Ext.getBody().on('click',NoitfyHide,this);
+	});  
+function hideNotify(){
+	if(notify!=null)
+	{
+		if(notify.notifyDiv.isVisible("visibility"))
+	   	{
+	   		notify.hide();
+	   		notify=null;
+	   		data.data=null; 
+	   	}  
+   	} 
+} 
+ 
+ 
+	
+	
+ 
+
+
+
+
+
+LBUI.title.iconItems.push({id:'home',iconCls:'homeIco',overIconCls:'homeIcoOver',href:'/jsp/portal/home.jsp',hrefTarget:'fraRightFrame',
+    text:"首页"
+});
+LBUI.title.textItems.push({id:'edit',icon:'/css/themes/default/images/title/ico_edit.gif',iconCls:'homeEditIco',overIconCls:'homeEditIcoOver',href:'/jsp/portal/home.jsp?portal:componentId=portal&portal:action=changeModePortal',hrefTarget:'fraRightFrame',
+	attribute:1,
+    text:"编辑首页"
+});
+
+		LBUI.title.iconItems.push({id:'bp',iconCls:'bpIco',overIconCls:'bpIcoOver',href:'/UIProcessor?Table=WORKFLOW_TOTASKS',hrefTarget:'fraRightFrame',
+		text:"流程中心",
+				notification : 'TodoTaskNotification'
+				});
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function selectTheme(){
+	var  win = LBUI.showModalDialog('/jsp/themeExt3/theme/uithemes.jsp',{
+		title:"请选择一个界面风格",
+	    layout:'fit',
+	    width:712,
+	    height:547,
+	    autoScroll:true,
+	    footerbar: [{
+	        text: '关闭',
+	        handler: function(){
+	            win.close();
+	        }
+	    }]
+	});
+
+}
+
+
+
+LBUI.title.iconItems.push({id:'theme',iconCls:'themeIco',overIconCls:'themeIcoOver',handler:selectTheme,text:"界面风格(默认风格)"});
+
+	
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+	//LBUI.title.iconItems.push({id:'mqmsg',iconCls:'messageIco',handler:onHisMessage,text:'消息'});
+
+	Ext.apply(LBUI.title,{
+	    userName:'喻小松',
+	    lastLogin:'2024-07-09 15:05:06',
+		canUploadPhoto : true,
+		photouri:'/Picture?dFVzZXIvUGhvdG8vOTEwOS8wLzE5MGEwOGNjNjE2'
+		
+		,globalsearchcfg:{searchTypes:[["<@sys_user_menu>","菜单"],["<@workflow>","流程"]]}
+		
+	});
+
+	LBUI.title.init();
+    Ext.onReady(function () {
+    
+    });
+</script>
+    
+</div></div><div class="x-panel-bbar x-panel-bbar-noborder" id="ext-gen26" style="width: 2560px;"><div id="ext-comp-1008" class="x-toolbar x-small-editor lb-main-tb x-toolbar-layout-ct" style="width: 2556px;"><table cellspacing="0" class="x-toolbar-ct"><tbody><tr><td class="x-toolbar-left" align="left"><table cellspacing="0"><tbody><tr class="x-toolbar-left-row"><td class="x-toolbar-cell" id="ext-gen29"><table id="ext-comp-1009" cellspacing="0" class="x-btn   x-btn-noicon" style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen30" class=" x-btn-text">首页</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell" id="ext-gen31"><table id="ext-comp-1011" cellspacing="0" class="x-btn   x-btn-noicon" style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen32" class=" x-btn-text">内部信息</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell" id="ext-gen33"><table id="ext-comp-1015" cellspacing="0" class="x-btn   x-btn-noicon" style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen34" class=" x-btn-text">通用管理</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell" id="ext-gen35"><table id="ext-comp-1018" cellspacing="0" class="x-btn   x-btn-noicon " style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen36" class=" x-btn-text">集团管控</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell" id="ext-gen37"><table id="ext-comp-1021" cellspacing="0" class="x-btn   x-btn-noicon " style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen38" class=" x-btn-text">营销协同</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell" id="ext-gen39"><table id="ext-comp-1028" cellspacing="0" class="x-btn   x-btn-noicon" style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen40" class=" x-btn-text">采购管理</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell" id="ext-gen41"><table id="ext-comp-1031" cellspacing="0" class="x-btn   x-btn-noicon " style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen42" class=" x-btn-text">库存管理</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell " id="ext-gen43"><table id="ext-comp-1034" cellspacing="0" class="x-btn   x-btn-noicon " style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen44" class=" x-btn-text">生产管理</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell " id="ext-gen45"><table id="ext-comp-1055" cellspacing="0" class="x-btn   x-btn-noicon " style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen46" class=" x-btn-text">设计管理</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell " id="ext-gen47"><table id="ext-comp-1060" cellspacing="0" class="x-btn   x-btn-noicon" style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen48" class=" x-btn-text">项目公司</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell " id="ext-gen49"><table id="ext-comp-1064" cellspacing="0" class="x-btn   x-btn-noicon" style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen50" class=" x-btn-text">质量管理</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell " id="ext-gen51"><table id="ext-comp-1066" cellspacing="0" class="x-btn   x-btn-noicon" style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen52" class=" x-btn-text">党政管理</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell " id="ext-gen53"><table id="ext-comp-1070" cellspacing="0" class="x-btn   x-btn-noicon" style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen54" class=" x-btn-text">人力资源</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell " id="ext-gen55"><table id="ext-comp-1078" cellspacing="0" class="x-btn   x-btn-noicon" style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen56" class=" x-btn-text">资产管理</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell " id="ext-gen57"><table id="ext-comp-1084" cellspacing="0" class="x-btn   x-btn-noicon" style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen58" class=" x-btn-text">财务成本管理</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell " id="ext-gen59"><table id="ext-comp-1087" cellspacing="0" class="x-btn   x-btn-noicon" style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen60" class=" x-btn-text">基础数据</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell " id="ext-gen61"><table id="ext-comp-1090" cellspacing="0" class="x-btn   x-btn-noicon" style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen62" class=" x-btn-text">工作流系统</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell " id="ext-gen63"><table id="ext-comp-1092" cellspacing="0" class="x-btn   x-btn-noicon " style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen64" class=" x-btn-text">系统管理</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell " id="ext-gen65"><table id="ext-comp-1100" cellspacing="0" class="x-btn   x-btn-noicon" style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen66" class=" x-btn-text">绩效管理</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td><td class="x-toolbar-cell " id="ext-gen67"><table id="ext-comp-1102" cellspacing="0" class="x-btn   x-btn-noicon" style="width: auto;"><tbody class="x-btn-small x-btn-icon-small-left"><tr><td class="x-btn-tl"><i>&nbsp;</i></td><td class="x-btn-tc"></td><td class="x-btn-tr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-ml"><i>&nbsp;</i></td><td class="x-btn-mc"><em class="x-btn-arrow" unselectable="on"><button type="button" id="ext-gen68" class=" x-btn-text">历史菜单</button></em></td><td class="x-btn-mr"><i>&nbsp;</i></td></tr><tr><td class="x-btn-bl"><i>&nbsp;</i></td><td class="x-btn-bc"></td><td class="x-btn-br"><i>&nbsp;</i></td></tr></tbody></table></td></tr></tbody></table></td><td class="x-toolbar-right" align="right"><table cellspacing="0" class="x-toolbar-right-ct"><tbody><tr><td><table cellspacing="0"><tbody><tr class="x-toolbar-right-row"></tr></tbody></table></td><td><table cellspacing="0"><tbody><tr class="x-toolbar-extras-row"><td class="x-toolbar-cell" id="ext-gen217"></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></div></div></div></div><div id="ext-comp-1106" class=" x-panel x-panel-noborder x-border-panel" style="left: 0px; top: 88px; width: 2524px;"><div class="x-panel-bwrap" id="ext-gen71"><div class="x-panel-body x-panel-body-noheader x-panel-body-noborder" id="ext-gen72" style="width: 2524px; height: 1209px;"><iframe name="fraRightFrame" frameborder="no" bordercolor="#FFFFFF" src="/jsp/portal/home.jsp" scrolling="auto" width="100%" height="100%" id="ext-gen84" remove_able="true" style="display: none;"></iframe><div class="lb-history_bar_welcome" style="display: none;">&nbsp;</div><iframe name="fraRightFrame_1720680509921" frameborder="0" src="/UIProcessor?Table=DA_out_file03_chd_V1&amp;ObjDescribe=NJIA3Y6IvZS9t2vB57AQTaPEe*P6rj6n" remove_able="true" width="100%" height="100%" style="" id="ext-gen122"></iframe></div></div></div>
+
+
+
+
+<div id="ext-comp-1002" class=" x-tip" style="position: absolute; z-index: 20002; visibility: hidden; display: none;"><div class="x-tip-tl"><div class="x-tip-tr"><div class="x-tip-tc"><div class="x-tip-header x-unselectable" id="ext-gen13"><span class="x-tip-header-text"></span></div></div></div></div><div class="x-tip-bwrap" id="ext-gen14"><div class="x-tip-ml"><div class="x-tip-mr"><div class="x-tip-mc" id="ext-gen17"><div class="x-tip-body" id="ext-gen15" style="height: auto;"></div></div></div></div><div class="x-tip-bl x-panel-nofooter" id="ext-gen16"><div class="x-tip-br"><div class="x-tip-bc"></div></div></div></div><div class="x-tip-anchor x-tip-anchor-top" id="ext-gen18" style="z-index: 20003; visibility: hidden;"></div></div><div id="ext-comp-1056" class="x-menu x-menu-floating x-layer  x-hide-offsets" style="position: absolute; z-index: 15000; visibility: hidden; left: -10000px; top: -10000px;"><a class="x-menu-focus" href="#" onclick="return false;" tabindex="-1" id="ext-gen90"></a><ul class="x-menu-list" id="ext-gen91" style="height: 312px;"><li id="x-menu-el-866" class="x-menu-list-item "><a id="866" class="x-menu-item" hidefocus="true" unselectable="on" href="#"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="x-menu-item-icon " id="ext-gen93"><span class="x-menu-item-text" id="ext-gen94">设计计划</span></a></li><li id="x-menu-el-867" class="x-menu-list-item "><a id="867" class="x-menu-item" hidefocus="true" unselectable="on" href="#"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="x-menu-item-icon " id="ext-gen95"><span class="x-menu-item-text" id="ext-gen96">主材图纸下发</span></a></li><li id="x-menu-el-868" class="x-menu-list-item "><a id="868" class="x-menu-item" hidefocus="true" unselectable="on" href="#"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="x-menu-item-icon " id="ext-gen97"><span class="x-menu-item-text" id="ext-gen98">采购单测算</span></a></li><li id="x-menu-el-870" class="x-menu-list-item "><a id="870" class="x-menu-item" hidefocus="true" unselectable="on" href="#"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="x-menu-item-icon " id="ext-gen99"><span class="x-menu-item-text" id="ext-gen100">出厂资料查询</span></a></li><li id="x-menu-el-872" class="x-menu-list-item "><a id="872" class="x-menu-item" hidefocus="true" unselectable="on" href="#"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="x-menu-item-icon " id="ext-gen101"><span class="x-menu-item-text" id="ext-gen102">图号比较</span></a></li><li id="x-menu-el-873" class="x-menu-list-item "><a id="873" class="x-menu-item x-menu-item-arrow" hidefocus="true" unselectable="on" href="#"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="x-menu-item-icon " id="ext-gen103"><span class="x-menu-item-text" id="ext-gen104">变压器重量管理</span></a></li><li id="x-menu-el-877" class="x-menu-list-item "><a id="877" class="x-menu-item" hidefocus="true" unselectable="on" href="#"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="x-menu-item-icon " id="ext-gen105"><span class="x-menu-item-text" id="ext-gen106">车间周计划查看</span></a></li><li id="x-menu-el-879" class="x-menu-list-item "><a id="879" class="x-menu-item x-menu-item-arrow" hidefocus="true" unselectable="on" href="#"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="x-menu-item-icon " id="ext-gen107"><span class="x-menu-item-text" id="ext-gen108">设计文档</span></a></li><li id="x-menu-el-883" class="x-menu-list-item "><a id="883" class="x-menu-item x-menu-item-arrow" hidefocus="true" unselectable="on" href="#"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="x-menu-item-icon " id="ext-gen109"><span class="x-menu-item-text" id="ext-gen110">负责人及图号查询</span></a></li><li id="x-menu-el-887" class="x-menu-list-item "><a id="887" class="x-menu-item" hidefocus="true" unselectable="on" href="#"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="x-menu-item-icon " id="ext-gen111"><span class="x-menu-item-text" id="ext-gen112">设计采购单查询</span></a></li><li id="x-menu-el-888" class="x-menu-list-item "><a id="888" class="x-menu-item" hidefocus="true" unselectable="on" href="#"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="x-menu-item-icon " id="ext-gen113"><span class="x-menu-item-text" id="ext-gen114">主材采购单主页</span></a></li><li id="x-menu-el-889" class="x-menu-list-item "><a id="889" class="x-menu-item" hidefocus="true" unselectable="on" href="#"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="x-menu-item-icon " id="ext-gen115"><span class="x-menu-item-text" id="ext-gen116">端子号查询</span></a></li><li id="x-menu-el-890" class="x-menu-list-item "><a id="890" class="x-menu-item" hidefocus="true" unselectable="on" href="#"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="x-menu-item-icon " id="ext-gen117"><span class="x-menu-item-text" id="ext-gen118">通用件分析</span></a></li></ul></div><div class="x-window-proxy" id="ext-gen174" style="display: none;"></div><div class="ext-el-mask" id="ext-gen175" style="display: block; width: 2560px; height: 1297px; z-index: 9000;"></div><div class="x-shadow" id="ext-gen208" style="z-index: 9002; left: 670px; top: 76px; width: 1410px; height: 1234px; display: none;"><div class="xst"><div class="xstl"></div><div class="xstc" style="width: 1398px;"></div><div class="xstr"></div></div><div class="xsc" style="height: 1222px;"><div class="xsml"></div><div class="xsmc" style="width: 1398px;"></div><div class="xsmr"></div></div><div class="xsb"><div class="xsbl"></div><div class="xsbc" style="width: 1398px;"></div><div class="xsbr"></div></div></div><div class="x-shadow" id="ext-gen119" style="z-index: 9002; left: 521px; top: -47px; width: 1410px; height: 1234px; display: block;"><div class="xst"><div class="xstl"></div><div class="xstc" style="width: 1398px;"></div><div class="xstr"></div></div><div class="xsc" style="height: 1222px;"><div class="xsml"></div><div class="xsmc" style="width: 1398px;"></div><div class="xsmr"></div></div><div class="xsb"><div class="xsbl"></div><div class="xsbc" style="width: 1398px;"></div><div class="xsbr"></div></div></div><div id="ext-comp-1112" class=" x-window x-resizable-pinned" style="position: absolute; z-index: 9003; visibility: visible; left: 525px; top: -50px; width: 1402px; display: block;"><div class="x-window-tl"><div class="x-window-tr"><div class="x-window-tc"><div class="x-window-header x-unselectable x-window-draggable" id="ext-gen165"><div class="x-tool x-tool-close " id="ext-gen172">&nbsp;</div><div class="x-tool x-tool-restore" id="ext-gen171" style="display: none;">&nbsp;</div><div class="x-tool x-tool-maximize " id="ext-gen170">&nbsp;</div><span class="x-window-header-text" id="ext-gen185">出厂序号(图纸) - 搜索</span></div></div></div></div><div class="x-window-bwrap" id="ext-gen166"><div class="x-window-ml"><div class="x-window-mr"><div class="x-window-mc" id="ext-gen169"><div class="x-window-body" id="ext-gen167" style="width: 1388px; height: 1202px;"><iframe class="lbui-modaldialog" src="http://192.168.100.12:8080/UIProcessor?Table=DA_out_file03_chd_V1&amp;Token=ff96e8613085118f25611c9df42c91d5&amp;ParamAction=true&amp;extResponse=true&amp;Column=P1&amp;Value=&amp;Control=1&amp;EVENT_SOURCE=DetailOptSearch&amp;extWindow=true&amp;PopupWin=true" frameborder="no" bordercolor="#FFFFFF" width="100%" height="100%" border="0"></iframe></div></div></div></div><div class="x-window-bl x-panel-nofooter" id="ext-gen168"><div class="x-window-br"><div class="x-window-bc"></div></div></div></div><a href="#" class="x-dlg-focus" tabindex="-1" id="ext-gen173">&nbsp;</a><div class="x-resizable-handle x-resizable-handle-north x-unselectable x-window-handle" id="ext-gen177"></div><div class="x-resizable-handle x-resizable-handle-south x-unselectable x-window-handle" id="ext-gen178"></div><div class="x-resizable-handle x-resizable-handle-east x-unselectable x-window-handle" id="ext-gen179"></div><div class="x-resizable-handle x-resizable-handle-west x-unselectable x-window-handle" id="ext-gen180"></div><div class="x-resizable-handle x-resizable-handle-northeast x-unselectable x-window-handle" id="ext-gen181"></div><div class="x-resizable-handle x-resizable-handle-northwest x-unselectable x-window-handle" id="ext-gen182"></div><div class="x-resizable-handle x-resizable-handle-southeast x-unselectable x-window-handle" id="ext-gen183"></div><div class="x-resizable-handle x-resizable-handle-southwest x-unselectable x-window-handle" id="ext-gen184"></div></div><div class="x-resizable-proxy x-unselectable" id="ext-comp-1112-rzproxy" style="z-index: 9007; visibility: visible; display: none; width: 1400px; height: 1232px; left: 237px; top: 7px;"></div><div class="x-resizable-overlay x-unselectable" id="ext-gen210" style="cursor: n-resize; width: 2560px; height: 1297px; display: none;">&nbsp;</div></body></html>
