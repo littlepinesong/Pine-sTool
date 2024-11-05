@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Net;
+using System.Windows.Forms;
 
 namespace MoveAndClickMouse.IPandHostName
 {
     public partial class IPandHostName : DevExpress.XtraEditors.XtraForm
     {
         public delegate void FormMsgHandle(string strmsg);
+
         public event FormMsgHandle ShowMessage;
+
         public IPandHostName()
         {
             InitializeComponent();
@@ -22,7 +17,6 @@ namespace MoveAndClickMouse.IPandHostName
 
         private void IPandHostName_Load(object sender, EventArgs e)
         {
-
         }
 
         private void IPtoHostNameSimpleButton_Click(object sender, EventArgs e)
@@ -30,7 +24,7 @@ namespace MoveAndClickMouse.IPandHostName
             IPHostEntry hostInfo;
             try
             {
-                hostInfo = Dns.Resolve(this.IPtextEdit.Text);                
+                hostInfo = Dns.Resolve(this.IPtextEdit.Text);
             }
             catch (Exception ey)
             {
@@ -53,7 +47,7 @@ namespace MoveAndClickMouse.IPandHostName
                 IPHostEntry host = Dns.GetHostEntry(HostNameTextEdit1.Text);
                 foreach (IPAddress ip in host.AddressList)
                 {
-                    if (ip.AddressFamily==System.Net.Sockets.AddressFamily.InterNetwork)//返回IPv4地址
+                    if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)//返回IPv4地址
                     {
                         IPtextEdit1.Text = ip.ToString();
                         ShowMessage($"根据主机名：{HostNameTextEdit1.Text}");

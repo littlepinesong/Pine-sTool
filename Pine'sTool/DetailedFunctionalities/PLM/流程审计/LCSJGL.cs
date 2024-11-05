@@ -18,19 +18,30 @@ namespace Pine_sTool.DetailedFunctionalities.PLM.流程审计
     {
         private static ChromeDriver driver = null;
         IWebElement element = null;
+        AutomatonTool.AutoChromeHelpler autoChromeHelpler = new AutomatonTool.AutoChromeHelpler();
+        public delegate void ControlPanelMessage(string message);
+        public event ControlPanelMessage ShowMessage;
         public LCSJGL()
         {
             InitializeComponent();
         }
+
+        // 处理 ClassHelper 的输出并转发到 Main
+        private void ForwardElement(string element)
+        {
+            ShowMessage?.Invoke(element);
+        }
+
         /// <summary>
         /// 同步到流程审计管理界面
         /// </summary>
         /// <returns></returns>
         private bool intoLCSJGL()
         {
+            // 实例化 ClassHelper 并订阅它的 OnElementOutput 事件
+            autoChromeHelpler.OnElementOutput += ForwardElement;
             try
             {
-                AutomatonTool.AutoChromeHelpler autoChromeHelpler = new AutomatonTool.AutoChromeHelpler();
                 autoChromeHelpler.ConnectPLM();//连接PLM
                 autoChromeHelpler.intoLCSJGL();//进入流程审计管理
                 driver = autoChromeHelpler.GetDriver();
@@ -73,6 +84,8 @@ namespace Pine_sTool.DetailedFunctionalities.PLM.流程审计
                 if (element != null && element.Text == "导出列表至 XLSX")
                 { element.Click(); break; }//点击导出列表
             }
+            ////输出HTML内容
+            //autoChromeHelpler.GetHtmlData();
         }
         /// <summary>
         /// 同步数据数据审签(已执行)

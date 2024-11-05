@@ -12,6 +12,18 @@
         private static string hbDrawingMng = "s34MpWdDScQ0dCeebvIBXbyvm7GFKbfL9klxZRgJn4biaZd5yvLSDTb2j9JBgyMjpbeqjEKeHEd12wgnUpynTUDGvTqvyCOVnYvF0IjpU00=";
         private static string hbNoDrawingMng = "s34MpWdDScQ0dCeebvIBXbyvm7GFKbfL9klxZRgJn4Ysb75Mr8L2yOB6aLp4vWegf9g/YIpMkXgwPhEyL6n88q0FgNICn3v1QEfI8SN7fhQ=";
         private static string hbPlmdb = "s34MpWdDScQ0dCeebvIBXbyvm7GFKbfL9klxZRgJn4bkM89lSAowfVohX5zbLxCoM1HhgCtBk+9hyM618jZ9XGqsktdfQZAG";
+        private static string hbswcqdb = "s34MpWdDScQ0dCeebvIBXbyvm7GFKbfL/Zm2iap4xvwl9ygPVXregcKSH/dsMhEeT+mqa9FZwow5Yx0zGwU0q+2t+EDN5lM+";
+        
+        public static string SqlConnSwcq
+        {
+            get
+            {
+                string str = "";
+                str = DESEncrypt.Decrypt(hbswcqdb, "CP181224");
+                return str;
+            }
+        }
+
 
         public static string SqlConnPlmdb
         {

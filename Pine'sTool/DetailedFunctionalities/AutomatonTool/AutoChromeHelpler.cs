@@ -1,29 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
-using System.Threading;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Interactions;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using OpenQA.Selenium.Support.UI;
-using System.Data.SqlClient;
-using System.Text.RegularExpressions;
-using System.Data;
-using Microsoft.Win32;
-using TBEAHB.Base;
+using System;
+using System.Threading;
+using System.Windows.Forms;
+using HtmlAgilityPack;
 
-namespace Pine_sTool.AutomatonTool
+namespace Pine_sTool.DetailedFunctionalities.AutomatonTool
 {
-    internal class AutoChromeHelpler
+    public class AutoChromeHelpler
     {
         private static ChromeDriver driver = null;
         private string plmUser = Properties.Settings.Default.PLM_User;
         private string plmPassword = Properties.Settings.Default.PLM_Password;
+        //定义一个委托类型，用于输出每个字符串元素。
+        public delegate void ElementOutputDelegate(string element);
+        // 定义一个委托实例
+        public ElementOutputDelegate OnElementOutput;
         /// <summary>
         /// 获取当前Driver
         /// </summary>
@@ -111,17 +103,20 @@ namespace Pine_sTool.AutomatonTool
             //加载html源代码
             doc.LoadHtml(html);
             //获取所有的tr节点
-            HtmlAgilityPack.HtmlNodeCollection trs = doc.DocumentNode.SelectNodes("//tr");
+            HtmlNodeCollection trs = doc.DocumentNode.SelectNodes("//tr");
+            
             //遍历所有的tr节点
             foreach (var tr in trs)
             {
                 //获取tr节点下的所有td节点
-                HtmlAgilityPack.HtmlNodeCollection tds = tr.SelectNodes("td");
+                HtmlNodeCollection tds = tr.SelectNodes("td");
                 //遍历所有的td节点
                 foreach (var td in tds)
                 {
                     //输出td节点的文本
                     System.Console.WriteLine(td.InnerText);
+                    // 通过委托发送每个元素
+                    OnElementOutput?.Invoke(td.InnerText);
                 }
             }
         }

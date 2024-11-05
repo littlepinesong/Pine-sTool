@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraTab;
+using Pine_sTool.DetailedFunctionalities.AutomatonTool;
 using Pine_sTool.DetailedFunctionalities.IntranetDataDownload;
 using Pine_sTool.DetailedFunctionalities.Windchill登陆器;
 using System;
@@ -465,8 +466,21 @@ namespace Pine_sTool.MainControl
         private void PLM_LCSJ_BarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             DetailedFunctionalities.PLM.流程审计.LCSJGL fm = new DetailedFunctionalities.PLM.流程审计.LCSJGL();
+            fm.ShowMessage += new DetailedFunctionalities.PLM.流程审计.LCSJGL.ControlPanelMessage(ShowMessage);
             LoadFrmPage(fm, "流程审计");
-            //fm.Show();
+        }
+
+        private void AutomatonBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            AutomatonLaboratory fm = new AutomatonLaboratory();
+            LoadFrmPage(fm, "自动装置实验室");
+        }
+
+        private void GreatCheatBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DetailedFunctionalities.Cheat.Cheat fm = new DetailedFunctionalities.Cheat.Cheat();
+            //LoadFrmPage(fm, "作弊器");
+            fm.Show();
         }
 
         //private void timer2_Tick(object sender, EventArgs e)

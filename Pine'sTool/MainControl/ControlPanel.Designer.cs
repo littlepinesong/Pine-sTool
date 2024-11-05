@@ -58,6 +58,7 @@
             this.WindchillLoginButton = new DevExpress.XtraBars.BarButtonItem();
             this.MES_BarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.PLM_LCSJ_BarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.AutomatonBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -66,6 +67,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.GreatCheatBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainViewlayoutControl)).BeginInit();
@@ -90,10 +92,10 @@
             this.layoutControl2.Controls.Add(this.MessageListBoxControl);
             this.layoutControl2.Controls.Add(this.GreatImageSlider);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl2.Location = new System.Drawing.Point(0, 40);
+            this.layoutControl2.Location = new System.Drawing.Point(0, 80);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.layoutControlGroup1;
-            this.layoutControl2.Size = new System.Drawing.Size(1784, 921);
+            this.layoutControl2.Size = new System.Drawing.Size(1784, 881);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
             // 
@@ -102,7 +104,7 @@
             this.MainViewlayoutControl.Location = new System.Drawing.Point(12, 12);
             this.MainViewlayoutControl.Name = "MainViewlayoutControl";
             this.MainViewlayoutControl.Root = this.Root;
-            this.MainViewlayoutControl.Size = new System.Drawing.Size(1760, 700);
+            this.MainViewlayoutControl.Size = new System.Drawing.Size(1760, 669);
             this.MainViewlayoutControl.TabIndex = 7;
             this.MainViewlayoutControl.Text = "layoutControl1";
             // 
@@ -111,12 +113,12 @@
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1760, 700);
+            this.Root.Size = new System.Drawing.Size(1760, 669);
             this.Root.TextVisible = false;
             // 
             // HandleJSON_SimpleButton
             // 
-            this.HandleJSON_SimpleButton.Location = new System.Drawing.Point(12, 716);
+            this.HandleJSON_SimpleButton.Location = new System.Drawing.Point(12, 685);
             this.HandleJSON_SimpleButton.Name = "HandleJSON_SimpleButton";
             this.HandleJSON_SimpleButton.Size = new System.Drawing.Size(123, 22);
             this.HandleJSON_SimpleButton.StyleController = this.layoutControl2;
@@ -126,15 +128,15 @@
             // 
             // MessageListBoxControl
             // 
-            this.MessageListBoxControl.Location = new System.Drawing.Point(12, 742);
+            this.MessageListBoxControl.Location = new System.Drawing.Point(12, 711);
             this.MessageListBoxControl.Name = "MessageListBoxControl";
-            this.MessageListBoxControl.Size = new System.Drawing.Size(1760, 167);
+            this.MessageListBoxControl.Size = new System.Drawing.Size(1760, 158);
             this.MessageListBoxControl.StyleController = this.layoutControl2;
             this.MessageListBoxControl.TabIndex = 5;
             // 
             // GreatImageSlider
             // 
-            this.GreatImageSlider.Location = new System.Drawing.Point(139, 716);
+            this.GreatImageSlider.Location = new System.Drawing.Point(139, 685);
             this.GreatImageSlider.Name = "GreatImageSlider";
             this.GreatImageSlider.Size = new System.Drawing.Size(20, 22);
             this.GreatImageSlider.StyleController = this.layoutControl2;
@@ -152,22 +154,22 @@
             this.layoutControlItem1,
             this.layoutControlItem4});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1784, 921);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1784, 881);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.MessageListBoxControl;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 730);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 699);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1764, 171);
+            this.layoutControlItem2.Size = new System.Drawing.Size(1764, 162);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.HandleJSON_SimpleButton;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 704);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 673);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(127, 26);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
@@ -176,7 +178,7 @@
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(151, 704);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(151, 673);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
             this.emptySpaceItem2.Size = new System.Drawing.Size(1613, 26);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -184,7 +186,7 @@
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.GreatImageSlider;
-            this.layoutControlItem1.Location = new System.Drawing.Point(127, 704);
+            this.layoutControlItem1.Location = new System.Drawing.Point(127, 673);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(24, 26);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -195,7 +197,7 @@
             this.layoutControlItem4.Control = this.MainViewlayoutControl;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(1764, 704);
+            this.layoutControlItem4.Size = new System.Drawing.Size(1764, 673);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
@@ -221,9 +223,11 @@
             this.DownloadTableBarButtonItem,
             this.WindchillLoginButton,
             this.MES_BarButtonItem,
-            this.PLM_LCSJ_BarButtonItem});
+            this.PLM_LCSJ_BarButtonItem,
+            this.AutomatonBarButtonItem,
+            this.GreatCheatBarButtonItem});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 14;
+            this.barManager1.MaxItemId = 16;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
             // 
@@ -246,7 +250,9 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.DownloadTableBarButtonItem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.WindchillLoginButton, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.MES_BarButtonItem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.PLM_LCSJ_BarButtonItem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.PLM_LCSJ_BarButtonItem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.AutomatonBarButtonItem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.GreatCheatBarButtonItem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -363,13 +369,21 @@
             this.PLM_LCSJ_BarButtonItem.Name = "PLM_LCSJ_BarButtonItem";
             this.PLM_LCSJ_BarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PLM_LCSJ_BarButtonItem_ItemClick);
             // 
+            // AutomatonBarButtonItem
+            // 
+            this.AutomatonBarButtonItem.Caption = "自动装置实验室";
+            this.AutomatonBarButtonItem.Id = 14;
+            this.AutomatonBarButtonItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("AutomatonBarButtonItem.ImageOptions.Image")));
+            this.AutomatonBarButtonItem.Name = "AutomatonBarButtonItem";
+            this.AutomatonBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AutomatonBarButtonItem_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1784, 40);
+            this.barDockControlTop.Size = new System.Drawing.Size(1784, 80);
             // 
             // barDockControlBottom
             // 
@@ -383,17 +397,17 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 40);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 80);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 921);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 881);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1784, 40);
+            this.barDockControlRight.Location = new System.Drawing.Point(1784, 80);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 921);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 881);
             // 
             // PineNotifyIcon
             // 
@@ -408,6 +422,14 @@
             // timer2
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // GreatCheatBarButtonItem
+            // 
+            this.GreatCheatBarButtonItem.Caption = "单项配置器";
+            this.GreatCheatBarButtonItem.Id = 15;
+            this.GreatCheatBarButtonItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.GreatCheatBarButtonItem.Name = "GreatCheatBarButtonItem";
+            this.GreatCheatBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.GreatCheatBarButtonItem_ItemClick);
             // 
             // ControlPanel
             // 
@@ -479,5 +501,7 @@
         private DevExpress.XtraLayout.LayoutControl MainViewlayoutControl;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraBars.BarButtonItem AutomatonBarButtonItem;
+        private DevExpress.XtraBars.BarButtonItem GreatCheatBarButtonItem;
     }
 }

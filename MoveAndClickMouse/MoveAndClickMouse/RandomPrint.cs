@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 using Excel = Microsoft.Office.Interop.Excel;
-using MoveAndClickMouse;
-using System.Windows.Forms;
-using System.Threading;
 
 namespace MoveAndClickMouse
 {
-    class RandomPrint
+    internal class RandomPrint
     {
         public delegate void FormMsgHandle(string strmsg);
+
         public event FormMsgHandle ShowMessage;
+
         public void randomPrint()
         {
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
@@ -94,8 +90,9 @@ namespace MoveAndClickMouse
             Console.WriteLine("Done.");
             ShowMessage("Done.");
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="allText"></param>
         /// <param name="lineLength"></param>

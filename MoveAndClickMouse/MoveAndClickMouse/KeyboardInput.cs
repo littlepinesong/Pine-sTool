@@ -1,6 +1,3 @@
-﻿
-
-namespace KeyboardInputDemo
+﻿namespace KeyboardInputDemo
 {
-
 }
