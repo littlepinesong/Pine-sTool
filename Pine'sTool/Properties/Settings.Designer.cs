@@ -214,5 +214,29 @@ namespace Pine_sTool.Properties {
                 this["MES_ThreadNum"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("219523")]
+        public string PLM_User {
+            get {
+                return ((string)(this["PLM_User"]));
+            }
+            set {
+                this["PLM_User"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Lh187114")]
+        public string PLM_Password {
+            get {
+                return ((string)(this["PLM_Password"]));
+            }
+            set {
+                this["PLM_Password"] = value;
+            }
+        }
     }
 }

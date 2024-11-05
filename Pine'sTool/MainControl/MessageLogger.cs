@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pine_sTool.MainControl
 {
-    class MessageLogger
+    internal class MessageLogger
     {
         private static object logLock;
         private static MessageLogger _instance;
         private static string logFileName;
         public static string logFilePath;
+
         private MessageLogger()
         { }
 

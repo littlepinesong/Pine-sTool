@@ -1,25 +1,18 @@
-﻿using Pine_sTool.MainControl;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
+﻿using System;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace Pine_sTool.DetailedFunctionalities.MouseClickProgram
 {
     public static class MouseClickClass
     {
         public delegate void FormMsgHandle(string strmsg);
+
         public static event FormMsgHandle ShowMessage;
 
         #region 导入Windows API函数
+
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
@@ -44,7 +37,8 @@ namespace Pine_sTool.DetailedFunctionalities.MouseClickProgram
         private const uint WM_CLOSE = 0x0010;
         private const int MOUSEEVENTF_LEFTDOWN = 0x02;
         private const int MOUSEECENTF_LEFTUP = 0x04;
-        #endregion
+
+        #endregion 导入Windows API函数
 
         private static void mClick(int syncClickNum, double spanDuration)
         {
@@ -56,6 +50,7 @@ namespace Pine_sTool.DetailedFunctionalities.MouseClickProgram
         }
 
         #region 循环点击
+
         public static void Click(string mode, int spanDuration, int X_axis, int Y_axis, int syncClickNum)
         {
             int i = 1;
@@ -64,6 +59,7 @@ namespace Pine_sTool.DetailedFunctionalities.MouseClickProgram
             while (!stopLoop)
             {
                 #region 处理点击
+
                 //创建一个AutoResetEvent对象，用于等待子线程完成
                 AutoResetEvent resetEvent = new AutoResetEvent(false);
 
@@ -86,9 +82,11 @@ namespace Pine_sTool.DetailedFunctionalities.MouseClickProgram
                     //设置事件状态，以便主线程知道子线程已完成
                     resetEvent.Set();
                 });
-                #endregion
+
+                #endregion 处理点击
 
                 #region 处理移动
+
                 //创建一个AutoResetEvent对象，用于等待子线程完成
                 AutoResetEvent resetEvent2 = new AutoResetEvent(false);
                 //创建一个新线程，并在其中处理移动
@@ -97,15 +95,18 @@ namespace Pine_sTool.DetailedFunctionalities.MouseClickProgram
                     if (mode == "指定位置点击")
                     {
                         #region 在鼠标当前位置移动
+
                         //设置鼠标目标位置（计算机屏幕坐标原点在左上角）
                         System.Windows.Forms.Cursor.Position = new Point(X_axis, Y_axis);
                         Thread.Sleep((int)spanDuration);
-                        #endregion
+
+                        #endregion 在鼠标当前位置移动
                     }
                     //设置事件状态，以便主线程知道子线程已完成
                     resetEvent2.Set();
                 });
-                #endregion
+
+                #endregion 处理移动
 
                 //启动新线程
                 thread.Start();
@@ -125,6 +126,6 @@ namespace Pine_sTool.DetailedFunctionalities.MouseClickProgram
             }
         }
 
-        #endregion
+        #endregion 循环点击
     }
 }

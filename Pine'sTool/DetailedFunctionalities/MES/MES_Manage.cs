@@ -1,35 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using DevExpress.Utils;
 using DevExpress.XtraEditors;
-using DevExpress.Utils;
+using System;
+using System.Data;
+using System.Windows.Forms;
 using PT_MES_SCZJH_data_BLL = Pine_sTool.BLL.PT_MES_SCZJH_data;
 using PT_MES_SCZJH_data_Model = Pine_sTool.Model.PT_MES_SCZJH_data;
 using PT_MES_SCZJH_nodeList_BLL = Pine_sTool.BLL.PT_MES_SCZJH_nodeList;
 using PT_MES_SCZJH_nodeList_Model = Pine_sTool.Model.PT_MES_SCZJH_nodeList;
+
 //using PT_MES_SCZJH_MergerTable = Pine_sTool.BLL.PT_MES_SCZJH_MergerTable;
 using View_PT_MES_SCZJH_Merger_BLL = Pine_sTool.BLL.View_PT_MES_SCZJH_Merger;
+
 namespace Pine_sTool.DetailedFunctionalities.MES
 {
     public partial class MES_Manage : DevExpress.XtraEditors.XtraForm
     {
-        DataTable dt_MergerTable = new DataTable();
-        DataTable _gxbTable = new DataTable();
-        PT_MES_SCZJH_data_BLL pt_MES_SCZJH_data = new PT_MES_SCZJH_data_BLL();
-        PT_MES_SCZJH_data_Model data_model = new PT_MES_SCZJH_data_Model();
-        PT_MES_SCZJH_nodeList_BLL pt_MES_SCZJH_nodeList = new PT_MES_SCZJH_nodeList_BLL();
-        PT_MES_SCZJH_nodeList_Model nodeList_model = new PT_MES_SCZJH_nodeList_Model();
+        private DataTable dt_MergerTable = new DataTable();
+        private DataTable _gxbTable = new DataTable();
+        private PT_MES_SCZJH_data_BLL pt_MES_SCZJH_data = new PT_MES_SCZJH_data_BLL();
+        private PT_MES_SCZJH_data_Model data_model = new PT_MES_SCZJH_data_Model();
+        private PT_MES_SCZJH_nodeList_BLL pt_MES_SCZJH_nodeList = new PT_MES_SCZJH_nodeList_BLL();
+        private PT_MES_SCZJH_nodeList_Model nodeList_model = new PT_MES_SCZJH_nodeList_Model();
+
         //PT_MES_SCZJH_MergerTable pt_MES_SCZJH_MergerTable = new PT_MES_SCZJH_MergerTable();
-        View_PT_MES_SCZJH_Merger_BLL MergerTable = new View_PT_MES_SCZJH_Merger_BLL();
-        string _type = "";
-        string _th = "";
-        public MES_Manage(string th= "")
+        private View_PT_MES_SCZJH_Merger_BLL MergerTable = new View_PT_MES_SCZJH_Merger_BLL();
+
+        private string _type = "";
+        private string _th = "";
+
+        public MES_Manage(string th = "")
         {
             _th = th;
             InitializeComponent();
@@ -209,6 +208,7 @@ namespace Pine_sTool.DetailedFunctionalities.MES
             //urgentLevel主干.Caption = "紧急性";
             //urgentLevel主干.VisibleIndex = 12;
         }
+
         private void LoadDataTable()
         {
             // 自动编号行号
@@ -334,7 +334,6 @@ namespace Pine_sTool.DetailedFunctionalities.MES
             finishUserName节点.Visible = true;
             //difDay节点.Visible = true;
 
-
             name节点.Caption = "部件";
             name节点.VisibleIndex = 0;
             name节点.Width = 90;
@@ -384,7 +383,9 @@ namespace Pine_sTool.DetailedFunctionalities.MES
                 //获取光标所在列
                 string mouseColumn = gridView_SCZJH_MergerTable.FocusedColumn.FieldName.ToString();
                 //判断光标是否在行和指定列
+
                 #region 双击路径
+
                 //if (mouseColumn == "PartPath"||mouseColumn== "RelativePath")
                 {
                     //取得选定行信息
@@ -401,7 +402,8 @@ namespace Pine_sTool.DetailedFunctionalities.MES
                     MES_Manage form = new MES_Manage(targetTable, "工序表");
                     form.Show();
                 }
-                #endregion
+
+                #endregion 双击路径
             }
         }
 

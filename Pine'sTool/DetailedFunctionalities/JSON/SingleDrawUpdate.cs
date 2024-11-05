@@ -1,36 +1,34 @@
-﻿using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.IO;
-using System;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using PT_MES_SCZJH_data_BLL = Pine_sTool.BLL.PT_MES_SCZJH_data;
 using PT_MES_SCZJH_data_Model = Pine_sTool.Model.PT_MES_SCZJH_data;
 using PT_MES_SCZJH_nodeList_BLL = Pine_sTool.BLL.PT_MES_SCZJH_nodeList;
 using PT_MES_SCZJH_nodeList_Model = Pine_sTool.Model.PT_MES_SCZJH_nodeList;
 using View_PT_MES_SCZJH_Merger_BLL = Pine_sTool.BLL.View_PT_MES_SCZJH_Merger;
 
-
 namespace Pine_sTool.DetailedFunctionalities.JSON
 {
     /// <summary>
     /// 用于MES当中的单个图号更新操作
     /// </summary>
-    class SingleDrawUpdate
+    internal class SingleDrawUpdate
     {
-        PT_MES_SCZJH_data_BLL pt_MES_SCZJH_data = new PT_MES_SCZJH_data_BLL();
-        PT_MES_SCZJH_data_Model data_model = new PT_MES_SCZJH_data_Model();
-        PT_MES_SCZJH_nodeList_BLL pt_MES_SCZJH_nodeList = new PT_MES_SCZJH_nodeList_BLL();
-        PT_MES_SCZJH_nodeList_Model nodeList_model = new PT_MES_SCZJH_nodeList_Model();
-        View_PT_MES_SCZJH_Merger_BLL MergerTable = new View_PT_MES_SCZJH_Merger_BLL();
+        private PT_MES_SCZJH_data_BLL pt_MES_SCZJH_data = new PT_MES_SCZJH_data_BLL();
+        private PT_MES_SCZJH_data_Model data_model = new PT_MES_SCZJH_data_Model();
+        private PT_MES_SCZJH_nodeList_BLL pt_MES_SCZJH_nodeList = new PT_MES_SCZJH_nodeList_BLL();
+        private PT_MES_SCZJH_nodeList_Model nodeList_model = new PT_MES_SCZJH_nodeList_Model();
+        private View_PT_MES_SCZJH_Merger_BLL MergerTable = new View_PT_MES_SCZJH_Merger_BLL();
+
         /// <summary>
         /// 脚本导出文件路径
         /// </summary>
         public static string _filePath = @"C:\松的工具系统日志\数据\MES_SingleDrawNumDataOutput.txt";
+
         /// <summary>
         /// 单项更新的图号
         /// </summary>
-        static string _DrawingNumber = Pine_sTool.Properties.Settings.Default.DrawingNumber;
+        private static string _DrawingNumber = Pine_sTool.Properties.Settings.Default.DrawingNumber;
+
         /// <summary>
         /// 获取当前展示给用户的全表数据
         /// </summary>
@@ -41,6 +39,7 @@ namespace Pine_sTool.DetailedFunctionalities.JSON
             DataTable currentShowTable = newForm.LoadDataTable("");
             return currentShowTable;
         }
+
         /// <summary>
         /// 返回读取获取输出文件当中含有所需图号的表单
         /// </summary>
@@ -169,8 +168,8 @@ namespace Pine_sTool.DetailedFunctionalities.JSON
                         pt_MES_SCZJH_nodeList.Add(nodeList_model);
                     }
                     flag = true;
-                }                
-            }            
+                }
+            }
             return flag;
         }
     }

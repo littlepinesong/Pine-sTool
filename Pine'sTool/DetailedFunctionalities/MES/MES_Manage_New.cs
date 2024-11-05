@@ -1,37 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using DevExpress.Utils;
+using DevExpress.XtraEditors;
+using Pine_sTool.DetailedFunctionalities.JSON;
+using System;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using DevExpress.Utils;
 using PT_MES_SCZJH_data_BLL = Pine_sTool.BLL.PT_MES_SCZJH_data;
 using PT_MES_SCZJH_data_Model = Pine_sTool.Model.PT_MES_SCZJH_data;
 using PT_MES_SCZJH_nodeList_BLL = Pine_sTool.BLL.PT_MES_SCZJH_nodeList;
 using PT_MES_SCZJH_nodeList_Model = Pine_sTool.Model.PT_MES_SCZJH_nodeList;
+
 //using PT_MES_SCZJH_MergerTable = Pine_sTool.BLL.PT_MES_SCZJH_MergerTable;
 using View_PT_MES_SCZJH_Merger_BLL = Pine_sTool.BLL.View_PT_MES_SCZJH_Merger;
-using Pine_sTool.DetailedFunctionalities.JSON;
 
 namespace Pine_sTool.DetailedFunctionalities.MES
 {
     public partial class MES_Manage_New : DevExpress.XtraEditors.XtraForm
     {
-        DataTable dt_MergerTable = new DataTable();
-        DataTable _gxbTable = new DataTable();
-        PT_MES_SCZJH_data_BLL pt_MES_SCZJH_data = new PT_MES_SCZJH_data_BLL();
-        PT_MES_SCZJH_data_Model data_model = new PT_MES_SCZJH_data_Model();
-        PT_MES_SCZJH_nodeList_BLL pt_MES_SCZJH_nodeList = new PT_MES_SCZJH_nodeList_BLL();
-        PT_MES_SCZJH_nodeList_Model nodeList_model = new PT_MES_SCZJH_nodeList_Model();
+        private DataTable dt_MergerTable = new DataTable();
+        private DataTable _gxbTable = new DataTable();
+        private PT_MES_SCZJH_data_BLL pt_MES_SCZJH_data = new PT_MES_SCZJH_data_BLL();
+        private PT_MES_SCZJH_data_Model data_model = new PT_MES_SCZJH_data_Model();
+        private PT_MES_SCZJH_nodeList_BLL pt_MES_SCZJH_nodeList = new PT_MES_SCZJH_nodeList_BLL();
+        private PT_MES_SCZJH_nodeList_Model nodeList_model = new PT_MES_SCZJH_nodeList_Model();
+
         //PT_MES_SCZJH_MergerTable pt_MES_SCZJH_MergerTable = new PT_MES_SCZJH_MergerTable();
-        View_PT_MES_SCZJH_Merger_BLL MergerTable = new View_PT_MES_SCZJH_Merger_BLL();
-        string _type = "";
-        string _th = "";
-        public MES_Manage_New(string th= "1TBC.710.H30136")
+        private View_PT_MES_SCZJH_Merger_BLL MergerTable = new View_PT_MES_SCZJH_Merger_BLL();
+
+        private string _type = "";
+        private string _th = "";
+
+        public MES_Manage_New(string th = "1TBC.710.H30136")
         {
             _th = th;
             InitializeComponent();
@@ -235,7 +235,7 @@ namespace Pine_sTool.DetailedFunctionalities.MES
             };
         }
 
-        public DataTable LoadDataTable(string queryStr="")
+        public DataTable LoadDataTable(string queryStr = "")
         {
             SetSearchControlPlaceholder(searchControl1, "可按图号、型号、生产号、时间...等任意文本查询");
             // 自动编号行号
@@ -293,9 +293,9 @@ namespace Pine_sTool.DetailedFunctionalities.MES
                     }
                     else
                     {
-                        dt_MergerTable = MergerTable.GetList($@"drawingNo主干 like '%{queryStr}%' or productNo主干 like '%{queryStr}%' 
-or model主干 like '%{queryStr}%' or customerName主干 like '%{queryStr}%' or noTaxAmount主干 like '%{queryStr}%' or dateEnd主干 like '%{queryStr}%' 
-or count主干 like '%{queryStr}%' or stateName主干 like '%{queryStr}%' or outPut主干 like '%{queryStr}%' or timeLimitName主干 like '%{queryStr}%' 
+                        dt_MergerTable = MergerTable.GetList($@"drawingNo主干 like '%{queryStr}%' or productNo主干 like '%{queryStr}%'
+or model主干 like '%{queryStr}%' or customerName主干 like '%{queryStr}%' or noTaxAmount主干 like '%{queryStr}%' or dateEnd主干 like '%{queryStr}%'
+or count主干 like '%{queryStr}%' or stateName主干 like '%{queryStr}%' or outPut主干 like '%{queryStr}%' or timeLimitName主干 like '%{queryStr}%'
 or planCompletime主干 like '%{queryStr}%' ").Tables[0];
                     }
                 }
@@ -307,9 +307,9 @@ or planCompletime主干 like '%{queryStr}%' ").Tables[0];
                     }
                     else
                     {
-                        dt_MergerTable = MergerTable.GetList($@"drawingNo主干 like '%{queryStr}%' or productNo主干 like '%{queryStr}%' 
-or model主干 like '%{queryStr}%' or customerName主干 like '%{queryStr}%' or noTaxAmount主干 like '%{queryStr}%' or dateEnd主干 like '%{queryStr}%' 
-or count主干 like '%{queryStr}%' or stateName主干 like '%{queryStr}%' or outPut主干 like '%{queryStr}%' or timeLimitName主干 like '%{queryStr}%' 
+                        dt_MergerTable = MergerTable.GetList($@"drawingNo主干 like '%{queryStr}%' or productNo主干 like '%{queryStr}%'
+or model主干 like '%{queryStr}%' or customerName主干 like '%{queryStr}%' or noTaxAmount主干 like '%{queryStr}%' or dateEnd主干 like '%{queryStr}%'
+or count主干 like '%{queryStr}%' or stateName主干 like '%{queryStr}%' or outPut主干 like '%{queryStr}%' or timeLimitName主干 like '%{queryStr}%'
 or planCompletime主干 like '%{queryStr}%' ").Tables[0];
                     }
                 }
@@ -332,13 +332,13 @@ or planCompletime主干 like '%{queryStr}%' ").Tables[0];
                 //SetGxbVisible();
                 gridControl_SCZJH_MergerTable.DataSource = _gxbTable;
             }
-            return  (DataTable)gridControl_SCZJH_MergerTable.DataSource;
+            return (DataTable)gridControl_SCZJH_MergerTable.DataSource;
         }
 
         private void New_SetVisible()
         {
             xtraTabPage4.Text = "生产主计划";
-            this.Width = 2500-150;
+            this.Width = 2500 - 150;
             this.Height = 1115;
             //this.TopMost = true;
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -558,7 +558,7 @@ or planCompletime主干 like '%{queryStr}%' ").Tables[0];
             //createDt节点.Caption = "创建日期";
             //createDt节点.VisibleIndex = 12;
             //createDt节点.Width = 135;
-            
+
             gridView_SCZJH_MergerTable.CellMerge += (s, e) =>
             {
                 // 假设"KeyColumn"是决定合并的关键列
@@ -678,7 +678,9 @@ or planCompletime主干 like '%{queryStr}%' ").Tables[0];
                     //获取光标所在列
                     string mouseColumn = gridView_SCZJH_MergerTable.FocusedColumn.FieldName.ToString();
                     //判断光标是否在行和指定列
+
                     #region 双击路径
+
                     //if (mouseColumn == "PartPath"||mouseColumn== "RelativePath")
                     {
                         //取得选定行信息
@@ -701,7 +703,7 @@ or planCompletime主干 like '%{queryStr}%' ").Tables[0];
                                 column.ColumnName == "nodeDate节点" ||
                                 column.ColumnName == "finishDate节点" ||
                                 column.ColumnName == "startUserName节点" ||
-                                column.ColumnName == "finishUserName节点"){}
+                                column.ColumnName == "finishUserName节点") { }
                             else
                             {
                                 targetTable.Columns.Remove(column.ColumnName);
@@ -716,13 +718,14 @@ or planCompletime主干 like '%{queryStr}%' ").Tables[0];
                         var distinctRows = targetTable.AsEnumerable().Distinct(DataRowComparer.Default);
                         //filteredTable存储筛选结果
                         targetTable = distinctRows.CopyToDataTable();
-                        
+
                         gridControl_part.DataSource = targetTable;
                     }
-                    #endregion
+
+                    #endregion 双击路径
                 }
             }
-            catch (Exception){}
+            catch (Exception) { }
         }
 
         private void SCZJH_TO_SQL_Button_Click(object sender, EventArgs e)
@@ -779,7 +782,7 @@ or planCompletime主干 like '%{queryStr}%' ").Tables[0];
             pythonConfig.ShowDialog();
             SingleDrawUpdate singleDrawUpdate = new SingleDrawUpdate();
             bool result = singleDrawUpdate.UpdateToSql();
-            if (result){MessageBox.Show("数据更新完成");}
+            if (result) { MessageBox.Show("数据更新完成"); }
             else { MessageBox.Show("处理完成，未更改"); }
             LoadDataTable();
         }

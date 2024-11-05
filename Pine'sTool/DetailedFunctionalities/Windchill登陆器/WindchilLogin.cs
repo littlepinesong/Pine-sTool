@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
+﻿using Maticsoft.DBUtility;
+using MessageManager;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Interactions;
-using System.Threading;
-using Maticsoft.DBUtility;
-using MessageManager;
+using System;
+using System.Data;
+using System.Text;
+using System.Windows.Forms;
 
 namespace Pine_sTool.DetailedFunctionalities.Windchill登陆器
 {
@@ -26,12 +18,15 @@ namespace Pine_sTool.DetailedFunctionalities.Windchill登陆器
         {
             InitializeComponent();
         }
+
         private void WindchilLogin_Load(object sender, EventArgs e)
         {
             TBEAHB.Controls.Choose.MakeChoose(searchLookUpEdit1, TBEAHB.Controls.enumChoose.user);
             memoEdit1.Text = "注意,隐私行为,正在被管理员监控";
         }
-        string WindchillUserCard = "";
+
+        private string WindchillUserCard = "";
+
         private void LoginSimpleButton_Click(object sender, EventArgs e)
         {
             //设置ChromeDriver的路径
@@ -43,11 +38,11 @@ namespace Pine_sTool.DetailedFunctionalities.Windchill登陆器
             driver = new ChromeDriver(chromeDriverService);
             WindchillUserCard = MessageManager.UserHelper.GetCarNOByID(int.Parse(searchLookUpEdit1.EditValue.ToString()));
             //1.尝试首字母
-            string userPass = getPassWord()+"123456";
+            string userPass = getPassWord() + "123456";
             try
             {
                 //driver.Navigate().GoToUrl($"http://219523:Lh187114@plmnew.tbea-hb.com.cn/Windchill/app/");
-                string url = $"http://"+$"{WindchillUserCard}:{userPass}@plmnew.tbea-hb.com.cn/Windchill/app/";
+                string url = $"http://" + $"{WindchillUserCard}:{userPass}@plmnew.tbea-hb.com.cn/Windchill/app/";
                 driver.Navigate().GoToUrl(url);
                 IWebElement searchBox = driver.FindElement(By.Id("gloabalSearchField"));
                 memoEdit1.Text += "\r\n密码1正确";
@@ -71,7 +66,7 @@ namespace Pine_sTool.DetailedFunctionalities.Windchill登陆器
                 }
             }
             SendHelper sendHelper = new SendHelper();
-            sendHelper.SendSimpleMsg("", $"{ MessageManager.UserHelper.GetUserNamesByCarNO(Environment.UserName)}正在使用自动Windchill登录\r\n{memoEdit1.Text}", "176630", "Message001");
+            sendHelper.SendSimpleMsg("", $"{MessageManager.UserHelper.GetUserNamesByCarNO(Environment.UserName)}正在使用自动Windchill登录\r\n{memoEdit1.Text}", "176630", "Message001");
         }
 
         private void searchLookUpEdit1_EditValueChanged(object sender, EventArgs e)
@@ -80,7 +75,7 @@ namespace Pine_sTool.DetailedFunctionalities.Windchill登陆器
             //1.尝试首字母+123456
             string userPass1 = getPassWord() + "123456";
             //2.尝试Hb+工号
-            string userPass2= "Hb" + $"{WindchillUserCard}";
+            string userPass2 = "Hb" + $"{WindchillUserCard}";
             memoEdit1.Text += $"\r\n{MessageManager.UserHelper.GetUserNamesByCarNO(WindchillUserCard)}:{WindchillUserCard}";
             memoEdit1.Text += $"\r\n密码1:{userPass1}";
             memoEdit1.Text += $"\r\n密码2:{userPass2}";

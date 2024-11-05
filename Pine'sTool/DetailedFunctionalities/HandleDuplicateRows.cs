@@ -1,24 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Maticsoft.DBUtility;
+
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Maticsoft.DBUtility;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 
 namespace Pine_sTool.DetailedFunctionalities
 {
     public partial class HandleDuplicateRows : DevExpress.XtraEditors.XtraForm
     {
-        DataTable originTable = new DataTable();
-        DataTable filteredTable = new DataTable();
+        private DataTable originTable = new DataTable();
+        private DataTable filteredTable = new DataTable();
         public static DbHelperSQLP DbHelperSQL_data = new DbHelperSQLP("server=192.168.10.203;database=hbcshdb;user=cshadmin;pwd=57Ki)j9-");//连接数据库
+
         public delegate void ControlPanelMessage(string message);
+
         public event ControlPanelMessage ShowMessage;
 
         public HandleDuplicateRows()
@@ -49,7 +46,7 @@ namespace Pine_sTool.DetailedFunctionalities
 
         private void HandleFilteredTable()
         {
-            //对产生的表进行去重操作            
+            //对产生的表进行去重操作
             //使用LINQ查询并保留唯一的行
             var distinctRows = originTable.AsEnumerable().Distinct(DataRowComparer.Default);
             //filteredTable存储筛选结果
@@ -68,7 +65,6 @@ namespace Pine_sTool.DetailedFunctionalities
             }
             catch (Exception)
             {
-                
             }
         }
     }

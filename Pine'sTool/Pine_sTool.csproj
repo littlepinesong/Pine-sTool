@@ -70,6 +70,9 @@
     <Reference Include="DevExpress.XtraLayout.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="HtmlAgilityPack, Version=1.11.70.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.70\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="Maticsoft.Common">
       <HintPath>..\Tools_Dlls\Maticsoft.Common.dll</HintPath>
     </Reference>
@@ -170,6 +173,13 @@
       <DependentUpon>ClickSettingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DetailedFunctionalities\MouseClickProgram\MouseClickClass.cs" />
+    <Compile Include="DetailedFunctionalities\AutomatonTool\AutoChromeHelpler.cs" />
+    <Compile Include="DetailedFunctionalities\PLM\流程审计\LCSJGL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailedFunctionalities\PLM\流程审计\LCSJGL.Designer.cs">
+      <DependentUpon>LCSJGL.cs</DependentUpon>
+    </Compile>
     <Compile Include="DetailedFunctionalities\ProcessControl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +202,12 @@
     </Compile>
     <Compile Include="MainControl\ImageHelper.cs" />
     <Compile Include="MainControl\MessageLogger.cs" />
+    <Compile Include="MainControl\XtraTableControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainControl\XtraTableControl.Designer.cs">
+      <DependentUpon>XtraTableControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -257,6 +273,9 @@
     <EmbeddedResource Include="DetailedFunctionalities\MouseClickProgram\ClickSettingForm.resx">
       <DependentUpon>ClickSettingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DetailedFunctionalities\PLM\流程审计\LCSJGL.resx">
+      <DependentUpon>LCSJGL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DetailedFunctionalities\ProcessControl.resx">
       <DependentUpon>ProcessControl.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -267,12 +286,16 @@
     <EmbeddedResource Include="MainControl\ControlPanel.resx">
       <DependentUpon>ControlPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainControl\XtraTableControl.resx">
+      <DependentUpon>XtraTableControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

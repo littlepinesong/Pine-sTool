@@ -1,23 +1,17 @@
-﻿using System;
+﻿using MessageManager;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using System.IO;
 using System.Diagnostics;
-using MessageManager;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Pine_sTool.DetailedFunctionalities.MES
 {
     public partial class PythonConfig : DevExpress.XtraEditors.XtraForm
     {
-        string _flag = "";
-        public PythonConfig(string flag="")
+        private string _flag = "";
+
+        public PythonConfig(string flag = "")
         {
             InitializeComponent();
             _flag = flag;
@@ -43,7 +37,7 @@ namespace Pine_sTool.DetailedFunctionalities.MES
             DriverPathTextEdit.EditValue = $@"{Properties.Settings.Default.DriverPath}";
             AgentServerCheckEdit.Checked = false;
             AgentServerCheckEdit.Enabled = false;
-            if (_flag== "SingleDrawUpdate")
+            if (_flag == "SingleDrawUpdate")
             {
                 IsCreateCCXH_ExcelCheckEdit.Checked = false;
                 IsCreateCCXH_ExcelCheckEdit.Enabled = false;
@@ -58,14 +52,14 @@ namespace Pine_sTool.DetailedFunctionalities.MES
             }
         }
 
-        Dictionary<string, string> DataConfig = new Dictionary<string, string>();
+        private Dictionary<string, string> DataConfig = new Dictionary<string, string>();
 
         private void SaveAndRunSimpleButton_Click(object sender, EventArgs e)
         {
-            if (Environment.UserName!= UserNameTextEdit.EditValue.ToString())
+            if (Environment.UserName != UserNameTextEdit.EditValue.ToString())
             {
-                MessageBox.Show($"为了数据安全\r\n请输入当前登录用户：[{UserHeper.GetCurrentUserName()}]-工号：[{Environment.UserName}]\r\n的综合管理平台账号密码","提示",
-                    MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show($"为了数据安全\r\n请输入当前登录用户：[{UserHeper.GetCurrentUserName()}]-工号：[{Environment.UserName}]\r\n的综合管理平台账号密码", "提示",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             if (_flag == "")
@@ -127,7 +121,7 @@ namespace Pine_sTool.DetailedFunctionalities.MES
                 //启动脚本
                 Process.Start(CrawlerPath);
             }
-            else if (_flag == "SingleDrawUpdate") 
+            else if (_flag == "SingleDrawUpdate")
             {
                 if (string.IsNullOrEmpty(UserNameTextEdit.EditValue.ToString()) ||
                     string.IsNullOrEmpty(PasswordTextEdit.EditValue.ToString()) ||
@@ -178,7 +172,7 @@ namespace Pine_sTool.DetailedFunctionalities.MES
                 Properties.Settings.Default.DriverPath = DriverPathTextEdit.EditValue.ToString();
                 //最后进行清除并提示
                 DataConfig.Clear();
-                MessageBox.Show("点击确定-开始运行\r\n请关注内存使用情况，防止线程开启过多导致死机","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("点击确定-开始运行\r\n请关注内存使用情况，防止线程开启过多导致死机", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 string processPath = AppDomain.CurrentDomain.BaseDirectory;
                 Console.WriteLine(processPath);
@@ -189,6 +183,6 @@ namespace Pine_sTool.DetailedFunctionalities.MES
             }
         }
 
-        private string CrawlerPath="";
+        private string CrawlerPath = "";
     }
 }

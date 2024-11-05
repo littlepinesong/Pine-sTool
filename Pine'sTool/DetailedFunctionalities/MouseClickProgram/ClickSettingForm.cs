@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Pine_sTool.DetailedFunctionalities.MouseClickProgram
 {
@@ -60,6 +53,7 @@ namespace Pine_sTool.DetailedFunctionalities.MouseClickProgram
         }
 
         public delegate void MyDelegate(Dictionary<string, string> dic);
+
         public event MyDelegate myEvent;
 
         private Dictionary<string, string> elementDic = new Dictionary<string, string>()
@@ -130,9 +124,9 @@ namespace Pine_sTool.DetailedFunctionalities.MouseClickProgram
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // layoutControl1
-            // 
+            //
             this.layoutControl1.Controls.Add(this.StartClick);
             this.layoutControl1.Controls.Add(this.checkEdit5);
             this.layoutControl1.Controls.Add(this.checkEdit4);
@@ -150,9 +144,9 @@ namespace Pine_sTool.DetailedFunctionalities.MouseClickProgram
             this.layoutControl1.Size = new System.Drawing.Size(529, 261);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
-            // 
+            //
             // StartClick
-            // 
+            //
             this.StartClick.Location = new System.Drawing.Point(12, 227);
             this.StartClick.Name = "StartClick";
             this.StartClick.Size = new System.Drawing.Size(505, 22);
@@ -160,86 +154,86 @@ namespace Pine_sTool.DetailedFunctionalities.MouseClickProgram
             this.StartClick.TabIndex = 13;
             this.StartClick.Text = "开始点击";
             this.StartClick.Click += new System.EventHandler(this.StartClick_Click);
-            // 
+            //
             // checkEdit5
-            // 
+            //
             this.checkEdit5.Location = new System.Drawing.Point(12, 192);
             this.checkEdit5.Name = "checkEdit5";
             this.checkEdit5.Properties.Caption = "特殊形状点击";
             this.checkEdit5.Size = new System.Drawing.Size(505, 19);
             this.checkEdit5.StyleController = this.layoutControl1;
             this.checkEdit5.TabIndex = 12;
-            // 
+            //
             // checkEdit4
-            // 
+            //
             this.checkEdit4.Location = new System.Drawing.Point(12, 159);
             this.checkEdit4.Name = "checkEdit4";
             this.checkEdit4.Properties.Caption = "代理点击";
             this.checkEdit4.Size = new System.Drawing.Size(505, 19);
             this.checkEdit4.StyleController = this.layoutControl1;
             this.checkEdit4.TabIndex = 11;
-            // 
+            //
             // checkEdit3
-            // 
+            //
             this.checkEdit3.Location = new System.Drawing.Point(12, 126);
             this.checkEdit3.Name = "checkEdit3";
             this.checkEdit3.Properties.Caption = "当前鼠标位置（偏移）点击";
             this.checkEdit3.Size = new System.Drawing.Size(505, 19);
             this.checkEdit3.StyleController = this.layoutControl1;
             this.checkEdit3.TabIndex = 10;
-            // 
+            //
             // Y_AxisTextEdit
-            // 
+            //
             this.Y_AxisTextEdit.Location = new System.Drawing.Point(413, 92);
             this.Y_AxisTextEdit.Name = "Y_AxisTextEdit";
             this.Y_AxisTextEdit.Size = new System.Drawing.Size(104, 20);
             this.Y_AxisTextEdit.StyleController = this.layoutControl1;
             this.Y_AxisTextEdit.TabIndex = 9;
-            // 
+            //
             // X_AxisTextEdit
-            // 
+            //
             this.X_AxisTextEdit.Location = new System.Drawing.Point(159, 92);
             this.X_AxisTextEdit.Name = "X_AxisTextEdit";
             this.X_AxisTextEdit.Size = new System.Drawing.Size(103, 20);
             this.X_AxisTextEdit.StyleController = this.layoutControl1;
             this.X_AxisTextEdit.TabIndex = 8;
-            // 
+            //
             // SyncClickTimesTextEdit
-            // 
+            //
             this.SyncClickTimesTextEdit.Location = new System.Drawing.Point(413, 68);
             this.SyncClickTimesTextEdit.Name = "SyncClickTimesTextEdit";
             this.SyncClickTimesTextEdit.Size = new System.Drawing.Size(104, 20);
             this.SyncClickTimesTextEdit.StyleController = this.layoutControl1;
             this.SyncClickTimesTextEdit.TabIndex = 7;
-            // 
+            //
             // SpanDurationTextEdit
-            // 
+            //
             this.SpanDurationTextEdit.Location = new System.Drawing.Point(159, 68);
             this.SpanDurationTextEdit.Name = "SpanDurationTextEdit";
             this.SpanDurationTextEdit.Size = new System.Drawing.Size(103, 20);
             this.SpanDurationTextEdit.StyleController = this.layoutControl1;
             this.SpanDurationTextEdit.TabIndex = 6;
-            // 
+            //
             // AppointedCheckEdit
-            // 
+            //
             this.AppointedCheckEdit.Location = new System.Drawing.Point(12, 45);
             this.AppointedCheckEdit.Name = "AppointedCheckEdit";
             this.AppointedCheckEdit.Properties.Caption = "指定位置点击";
             this.AppointedCheckEdit.Size = new System.Drawing.Size(505, 19);
             this.AppointedCheckEdit.StyleController = this.layoutControl1;
             this.AppointedCheckEdit.TabIndex = 5;
-            // 
+            //
             // MinFormCheckEdit
-            // 
+            //
             this.MinFormCheckEdit.Location = new System.Drawing.Point(12, 12);
             this.MinFormCheckEdit.Name = "MinFormCheckEdit";
             this.MinFormCheckEdit.Properties.Caption = "主界面最小化到通知栏";
             this.MinFormCheckEdit.Size = new System.Drawing.Size(505, 19);
             this.MinFormCheckEdit.StyleController = this.layoutControl1;
             this.MinFormCheckEdit.TabIndex = 4;
-            // 
+            //
             // layoutControlGroup1
-            // 
+            //
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.layoutControlGroup1.GroupBordersVisible = false;
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
@@ -261,139 +255,139 @@ namespace Pine_sTool.DetailedFunctionalities.MouseClickProgram
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(529, 261);
             this.layoutControlGroup1.TextVisible = false;
-            // 
+            //
             // layoutControlItem1
-            // 
+            //
             this.layoutControlItem1.Control = this.MinFormCheckEdit;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(509, 23);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
-            // 
+            //
             // emptySpaceItem1
-            // 
+            //
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 203);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(509, 12);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
+            //
             // layoutControlItem2
-            // 
+            //
             this.layoutControlItem2.Control = this.AppointedCheckEdit;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 33);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(509, 23);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
-            // 
+            //
             // layoutControlItem3
-            // 
+            //
             this.layoutControlItem3.Control = this.SpanDurationTextEdit;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 56);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(254, 24);
             this.layoutControlItem3.Text = "点击时间间隔（单位：秒）";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(144, 14);
-            // 
+            //
             // layoutControlItem4
-            // 
+            //
             this.layoutControlItem4.Control = this.SyncClickTimesTextEdit;
             this.layoutControlItem4.Location = new System.Drawing.Point(254, 56);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(255, 24);
             this.layoutControlItem4.Text = "同时刻点击次数";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(144, 14);
-            // 
+            //
             // X
-            // 
+            //
             this.X.Control = this.X_AxisTextEdit;
             this.X.Location = new System.Drawing.Point(0, 80);
             this.X.Name = "X";
             this.X.Size = new System.Drawing.Size(254, 24);
             this.X.Text = "X轴（单位：像素）";
             this.X.TextSize = new System.Drawing.Size(144, 14);
-            // 
+            //
             // Y
-            // 
+            //
             this.Y.Control = this.Y_AxisTextEdit;
             this.Y.Location = new System.Drawing.Point(254, 80);
             this.Y.Name = "Y";
             this.Y.Size = new System.Drawing.Size(255, 24);
             this.Y.Text = "Y轴（单位：像素）";
             this.Y.TextSize = new System.Drawing.Size(144, 14);
-            // 
+            //
             // layoutControlItem7
-            // 
+            //
             this.layoutControlItem7.Control = this.checkEdit3;
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 114);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Size = new System.Drawing.Size(509, 23);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
-            // 
+            //
             // layoutControlItem8
-            // 
+            //
             this.layoutControlItem8.Control = this.checkEdit4;
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 147);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(509, 23);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
-            // 
+            //
             // layoutControlItem9
-            // 
+            //
             this.layoutControlItem9.Control = this.checkEdit5;
             this.layoutControlItem9.Location = new System.Drawing.Point(0, 180);
             this.layoutControlItem9.Name = "layoutControlItem9";
             this.layoutControlItem9.Size = new System.Drawing.Size(509, 23);
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
-            // 
+            //
             // emptySpaceItem2
-            // 
+            //
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(0, 23);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
             this.emptySpaceItem2.Size = new System.Drawing.Size(509, 10);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
-            // 
+            //
             // emptySpaceItem3
-            // 
+            //
             this.emptySpaceItem3.AllowHotTrack = false;
             this.emptySpaceItem3.Location = new System.Drawing.Point(0, 104);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
             this.emptySpaceItem3.Size = new System.Drawing.Size(509, 10);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
-            // 
+            //
             // emptySpaceItem4
-            // 
+            //
             this.emptySpaceItem4.AllowHotTrack = false;
             this.emptySpaceItem4.Location = new System.Drawing.Point(0, 137);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
             this.emptySpaceItem4.Size = new System.Drawing.Size(509, 10);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
-            // 
+            //
             // emptySpaceItem5
-            // 
+            //
             this.emptySpaceItem5.AllowHotTrack = false;
             this.emptySpaceItem5.Location = new System.Drawing.Point(0, 170);
             this.emptySpaceItem5.Name = "emptySpaceItem5";
             this.emptySpaceItem5.Size = new System.Drawing.Size(509, 10);
             this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
-            // 
+            //
             // layoutControlItem10
-            // 
+            //
             this.layoutControlItem10.Control = this.StartClick;
             this.layoutControlItem10.Location = new System.Drawing.Point(0, 215);
             this.layoutControlItem10.Name = "layoutControlItem10";
             this.layoutControlItem10.Size = new System.Drawing.Size(509, 26);
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
-            // 
+            //
             // ClickSettingForm
-            // 
+            //
             this.ClientSize = new System.Drawing.Size(529, 261);
             this.Controls.Add(this.layoutControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -429,7 +423,6 @@ namespace Pine_sTool.DetailedFunctionalities.MouseClickProgram
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             this.ResumeLayout(false);
-
         }
 
         private DevExpress.XtraLayout.LayoutControl layoutControl1;

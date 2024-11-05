@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DevExpress.Utils;
+﻿using DevExpress.Utils;
+using Pine_sTool.Properties;
+using System;
 using System.Drawing;
 using System.Reflection;
-using System.IO;
 using System.Resources;
-using Pine_sTool.Properties;
 
 namespace Pine_sTool.MainControl
 {
-    class ImageHelper
+    internal class ImageHelper
     {
         private static global::System.Globalization.CultureInfo resourceCulture;
         private static global::System.Resources.ResourceManager resourceMan;
+
         internal static global::System.Resources.ResourceManager ResourceManager
         {
             get
@@ -28,7 +24,8 @@ namespace Pine_sTool.MainControl
                 return resourceMan;
             }
         }
-        public static void AddImagesFromResource(ImageCollection imageCollection,string resourcePrefix = "_", int startIndex = 0, int count = 999)
+
+        public static void AddImagesFromResource(ImageCollection imageCollection, string resourcePrefix = "_", int startIndex = 0, int count = 999)
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
             for (int i = 1; i < count; i++)
@@ -42,9 +39,10 @@ namespace Pine_sTool.MainControl
                     //imageCollection.AddImage(Properties.Resources._16);
                 }
                 catch (Exception)
-                {}
+                { }
             }
         }
+
         //使用不成功
         //public static void AddImagesFromResource(ImageCollection imageCollection, string nameSpace= "System.Drawing", string resourcePrefix="_",string resourceSuffix="png", int startIndex=0, int count=999)
         //{

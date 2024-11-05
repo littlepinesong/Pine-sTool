@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Data;
 using System.IO;
-using System;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using PT_MES_SCZJH_data_BLL = Pine_sTool.BLL.PT_MES_SCZJH_data;
-using PT_MES_SCZJH_nodeList_BLL = Pine_sTool.BLL.PT_MES_SCZJH_nodeList;
-using PT_MES_SCZJH_MergerTable = Pine_sTool.BLL.PT_MES_SCZJH_MergerTable;
 
 namespace Pine_sTool.DetailedFunctionalities.JSON
 {
@@ -14,6 +10,7 @@ namespace Pine_sTool.DetailedFunctionalities.JSON
     {
         public static string _filePath = @"‪E:\打包文件\往期工作文件\2024年09月工作文件\2024年09月02日文件\output_2.txt";
         public static string _filePath_JDCX = @"D:\176630\Desktop\每日工作文件\2024年09月02日文件\工单各阶段状态.txt";//进度查询
+
         public static DataTable Convert_SCZJH(string typeStr = "生产主计划")
         {
             string json = "";
@@ -47,7 +44,7 @@ namespace Pine_sTool.DetailedFunctionalities.JSON
                         // 提取节点数据
                         var dataList_data = (jsonObject["data"] as JArray);
                         // 将节点数据转换为 DataTable
-                        dataTable_sczjh=(GreatPineMerge(dataTable_sczjh, dataList_data)).Copy();
+                        dataTable_sczjh = (GreatPineMerge(dataTable_sczjh, dataList_data)).Copy();
                         int sczjhCount2 = dataTable_sczjh.Rows.Count;
                     }
                     catch (Exception ex)
@@ -66,6 +63,7 @@ namespace Pine_sTool.DetailedFunctionalities.JSON
             ExportDataTableToCsv(dataTable_sczjh, "生产主计划.csv");
             return dataTable_sczjh;
         }
+
         private static DataTable GetMergerTable(DataTable dataTable_MergerTable, DataTable dataTable_sczjh, DataTable dataTable_sczjh_nodeList)
         {
             foreach (DataRow row in dataTable_sczjh.Rows)
@@ -89,6 +87,7 @@ namespace Pine_sTool.DetailedFunctionalities.JSON
             }
             return dataTable_MergerTable;
         }
+
         /// <summary>
         /// 使用internal,使之在同一程序集当中可以访问
         /// </summary>
@@ -122,7 +121,7 @@ namespace Pine_sTool.DetailedFunctionalities.JSON
                         new DataColumn("stateName",typeof(string)),
                     }
             };
-            
+
             DataTable result_sczjh_nodeList = new DataTable()
             {
                 Columns =
@@ -293,7 +292,7 @@ namespace Pine_sTool.DetailedFunctionalities.JSON
                         for (int i = 0; i < dataList_data.Count; i++)
                         {
                             var dataList_nodeList = (jsonObject["data"] as JArray)[i]["nodeList"] as JArray;
-                            dataTable_sczjh_nodeList=(GreatPineMerge(dataTable_sczjh_nodeList, dataList_nodeList)).Copy();
+                            dataTable_sczjh_nodeList = (GreatPineMerge(dataTable_sczjh_nodeList, dataList_nodeList)).Copy();
                         }
                     }
                     catch (Exception ex)
@@ -363,7 +362,7 @@ namespace Pine_sTool.DetailedFunctionalities.JSON
             return dataTable_jdcx;
         }
 
-        static void ExportDataTableToCsv(DataTable dataTable, string filePath)
+        private static void ExportDataTableToCsv(DataTable dataTable, string filePath)
         {
             using (StreamWriter sw = new StreamWriter(filePath))
             {
@@ -387,6 +386,7 @@ namespace Pine_sTool.DetailedFunctionalities.JSON
                 }
             }
         }
+
         /// <summary>
         /// 将数据表转化为所有列均为string类型的数据表
         /// </summary>

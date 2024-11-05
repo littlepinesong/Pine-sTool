@@ -1,27 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using Maticsoft.DBUtility;
+using System;
+using System.Collections.Generic;
+using System.Data;
 using System.IO;
-using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraGrid.Columns;
-using DevExpress.Utils;
-using System.Diagnostics;
+using System.Text;
+using System.Windows.Forms;
 
 namespace Pine_sTool.DetailedFunctionalities.IntranetDataDownload
 {
     public partial class DownloadTable : DevExpress.XtraEditors.XtraForm
     {
         public static DbHelperSQLP DbHelperSQL_data = new DbHelperSQLP("server=192.168.10.203;database=hbcshdb;user=cshadmin;pwd=57Ki)j9-");//连接数据库
-        string _th = "";
-        string _sch = "";
+        private string _th = "";
+        private string _sch = "";
+
         public DownloadTable(string th = "", string sch = "")
         {
             InitializeComponent();
@@ -80,7 +74,6 @@ namespace Pine_sTool.DetailedFunctionalities.IntranetDataDownload
                 }
             };
 
-
             ServerChoeseComboBoxEdit.Properties.Items.Add(@"\\192.168.10.201\");
             ServerChoeseComboBoxEdit.Properties.Items.Add(@"\\192.168.10.202\");
             ServerChoeseComboBoxEdit.Properties.Items.Add(@"\\192.168.10.203\");
@@ -125,7 +118,6 @@ namespace Pine_sTool.DetailedFunctionalities.IntranetDataDownload
             }
             catch (Exception)
             {
-
             }
             DataTable table = (DataTable)gc.DataSource;
             int count = 0;
@@ -162,7 +154,9 @@ namespace Pine_sTool.DetailedFunctionalities.IntranetDataDownload
             //获取光标所在列
             string mouseColumn = gv.FocusedColumn.FieldName.ToString();
             //判断光标是否在行和指定列
+
             #region 双击路径
+
             //if (mouseColumn == "PartPath"||mouseColumn== "RelativePath")
             {
                 //取得选定行信息
@@ -186,7 +180,8 @@ namespace Pine_sTool.DetailedFunctionalities.IntranetDataDownload
                     }
                 }
             }
-            #endregion
+
+            #endregion 双击路径
         }
 
         private void ShowAllSimpleButton_Click(object sender, EventArgs e)
@@ -195,7 +190,8 @@ namespace Pine_sTool.DetailedFunctionalities.IntranetDataDownload
             loadDataTable();
         }
 
-        Dictionary<string, string> DataConfig = new Dictionary<string, string>();
+        private Dictionary<string, string> DataConfig = new Dictionary<string, string>();
+
         private void UpdateByDrawNumberSimpleButton_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Sch = _sch;

@@ -1,25 +1,20 @@
-﻿using System;
+﻿using DevExpress.XtraTab;
+using Pine_sTool.DetailedFunctionalities.IntranetDataDownload;
+using Pine_sTool.DetailedFunctionalities.Windchill登陆器;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using MoveAndClickMouse;
-using Pine_sTool.DetailedFunctionalities.IntranetDataDownload;
 using System.IO;
-using Pine_sTool.DetailedFunctionalities.Windchill登陆器;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace Pine_sTool.MainControl
 {
     public partial class ControlPanel : DevExpress.XtraEditors.XtraForm
     {
-        DateTime _day = DateTime.Today;
+        private DateTime _day = DateTime.Today;
+        XtraTableControl xtraTableControl1 = new XtraTableControl();
 
         public ControlPanel()
         {
@@ -37,9 +32,42 @@ namespace Pine_sTool.MainControl
             SeleniumBarEditItem.EditValue = true;
             HandleImage();
             InitializeImageTimer();
+
+            layoutControlItem3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
         }
 
         private Dictionary<string, string> elementDic = new Dictionary<string, string>();
+
+        private void LoadFrmPage(Form Fm, string pname)
+        {
+            MainViewlayoutControl.Controls.Clear();
+            MainViewlayoutControl.Controls.Add(xtraTableControl1);
+            foreach (XtraTabPage page1 in xtraTableControl1.MainXtraTabControl.TabPages)
+            {
+                if (page1.Text == pname)
+                {
+                    xtraTableControl1.MainXtraTabControl.SelectedTabPage = page1;//显示该页
+                    return;
+                }
+            }
+            //增加tabpage
+            XtraTabPage page = new XtraTabPage();
+            page.Name = pname;
+            page.Text = pname;
+
+            Fm.TopLevel = false;
+            Fm.Dock = System.Windows.Forms.DockStyle.Fill;
+            Fm.FormBorderStyle = FormBorderStyle.None;
+            Fm.Visible = true;
+            //Fm.Dock = DockStyle.Fill;
+            page.Controls.Add(Fm);//添加要增加的控件
+            xtraTableControl1.MainXtraTabControl.TabPages.Add(page);
+            xtraTableControl1.MainXtraTabControl.SelectedTabPage = page;//显示该页
+            Fm.Show();
+            this.Focus();
+
+
+        }
 
         public void ShowMessage(string message)
         {
@@ -103,6 +131,7 @@ namespace Pine_sTool.MainControl
         private readonly object lockObj = new object();
         private bool isRunning = false;
         private int threadId;
+
         public void AbortThread()
         {
             lock (lockObj) // 同步以避免竞态条件
@@ -114,6 +143,7 @@ namespace Pine_sTool.MainControl
                 }
             }
         }
+
         //private void MouseClickButtton_Click(object sender, EventArgs e)
         //{
         //    DevExpress.XtraEditors.XtraMessageBox.Show("按下“F8”键可终止鼠标点击程序\r\n按下“Esc”键可退出本程序", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -171,7 +201,6 @@ namespace Pine_sTool.MainControl
             Pine_sTool.DetailedFunctionalities.MouseClickProgram.MouseClickClass.Click(mode, spanDuration * switchScale, X_axis, Y_axis, syncClickNum);
         }
 
-
         private void ApplySetting(Dictionary<string, string> dic)
         {
             elementDic = dic;
@@ -182,10 +211,6 @@ namespace Pine_sTool.MainControl
             this.WindowState = FormWindowState.Normal;
             PineNotifyIcon.Visible = false;
         }
-
-        #region 用于处理Windows登录用户的信息
-
-        #endregion
 
         private void ControlPanel_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -251,6 +276,12 @@ namespace Pine_sTool.MainControl
 
         private void AutoLoginBigDataPlatForm_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (Environment.UserName == "176630") { }
+            else
+            {
+                MessageBox.Show("无权限");
+                return;
+            }
             GlobalValue._isTest = false;
 #if DEBUG
             timer2.Interval = 1 * 1000;   //测试计时器时间为10秒
@@ -259,18 +290,21 @@ namespace Pine_sTool.MainControl
 #endif
             TimerStart();
         }
-        void TimerStart()
+
+        private void TimerStart()
         {
             timer2.Start();
             MessageListBoxControl.Text = "      计时器状态：  已启动";
             ShowMessage($"定时器启动");
         }
+
         private void timer2_Tick(object sender, EventArgs e)
         {
             //1、处理每日自动登录大数据平台
             Thread loginThread = new Thread(new ParameterizedThreadStart(ThreadLoginBigDataPlatForm));
             loginThread.Start(null);
         }
+
         private void ThreadLoginBigDataPlatForm(object obj)
         {
             DateTime day = DateTime.Today;
@@ -291,6 +325,12 @@ namespace Pine_sTool.MainControl
 
         private void sotpAllAutoOptions_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (Environment.UserName == "176630") { }
+            else
+            {
+                MessageBox.Show("无权限");
+                return;
+            }
             timer2.Stop();
             MessageListBoxControl.Text = "      计时器状态：  已停止";
             ShowMessage($"定时器停止");
@@ -303,13 +343,19 @@ namespace Pine_sTool.MainControl
                 //关闭脚本(内网出场资料下载)
                 Process[] processes = Process.GetProcessesByName("FinalMain");
                 foreach (Process process in processes)
-                {process.Kill();}
+                { process.Kill(); }
             }
-            catch (Exception){}
+            catch (Exception) { }
         }
 
         private void TestAutoLoginBigDataPlatForm_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (Environment.UserName == "176630") { }
+            else
+            {
+                MessageBox.Show("无权限");
+                return;
+            }
             GlobalValue._isTest = true;
             timer2.Interval = 10 * 1000;   //测试计时器时间为10秒
             TimerStart();
@@ -319,13 +365,16 @@ namespace Pine_sTool.MainControl
         {
             GlobalValue.IsSeleniumShow = (bool)SeleniumBarEditItem.EditValue;
         }
+
         #region 处理图片
+
         private void HandleImage()
         {
             GreatImageSlider.ImageList = imageCollection1;
             GreatImageSlider.AnimationTime = 1000;
             ImageHelper.AddImagesFromResource(imageCollection1);
         }
+
         private void InitializeImageTimer()
         {
             timer1 = new System.Windows.Forms.Timer();
@@ -337,7 +386,7 @@ namespace Pine_sTool.MainControl
         private void Timer1_Tick(object sender, EventArgs e)
         {
             //// 每次定时器触发时，切换到下一张图片
-            //GreatImageSlider.SlideNext(); 
+            //GreatImageSlider.SlideNext();
 
             // Get the total number of images in the ImageSlider
             int totalImages = imageCollection1.Images.Count;
@@ -354,11 +403,18 @@ namespace Pine_sTool.MainControl
                 // Set the next index
                 GreatImageSlider.SetCurrentImageIndex(nextIndex);
             }
-            #endregion
+
+            #endregion 处理图片
         }
 
         private void NWZL_DownloadBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (Environment.UserName == "176630") { }
+            else
+            {
+                MessageBox.Show("无权限");
+                return;
+            }
             PythonConfig pythonConfig = new PythonConfig();
             pythonConfig.Show();
         }
@@ -371,6 +427,12 @@ namespace Pine_sTool.MainControl
 
         private void WindchillLoginButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (Environment.UserName == "176630") { }
+            else
+            {
+                MessageBox.Show("无权限");
+                return;
+            }
             WindchilLogin windchilLogin = new WindchilLogin();
             //windchilLogin.TopMost = true;
             windchilLogin.Show();
@@ -378,24 +440,37 @@ namespace Pine_sTool.MainControl
 
         private void HandleJSON_SimpleButton_Click(object sender, EventArgs e)
         {
-            DataTable dt_SCZJH = Pine_sTool.DetailedFunctionalities.JSON.JSON_TO_DataTable.Convert_SCZJH();
-            DataTable dt_SCZJH_nodeList = Pine_sTool.DetailedFunctionalities.JSON.JSON_TO_DataTable.Convert_SCZJH_nodeList();
-            DataTable dt_JDCX = Pine_sTool.DetailedFunctionalities.JSON.JSON_TO_DataTable.Convert_JDCX();
-            gridControl_SCZJH.DataSource = dt_SCZJH;
-            gridControl_JDB.DataSource = dt_SCZJH_nodeList;
-            gridControl_JDCX.DataSource = dt_JDCX;
+            //DataTable dt_SCZJH = Pine_sTool.DetailedFunctionalities.JSON.JSON_TO_DataTable.Convert_SCZJH();
+            //DataTable dt_SCZJH_nodeList = Pine_sTool.DetailedFunctionalities.JSON.JSON_TO_DataTable.Convert_SCZJH_nodeList();
+            //DataTable dt_JDCX = Pine_sTool.DetailedFunctionalities.JSON.JSON_TO_DataTable.Convert_JDCX();
+
+            //gridControl_SCZJH.DataSource = dt_SCZJH;
+            //gridControl_JDB.DataSource = dt_SCZJH_nodeList;
+            //gridControl_JDCX.DataSource = dt_JDCX;
         }
 
         private void MES_BarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (Environment.UserName == "176630") { }
+            else
+            {
+                MessageBox.Show("无权限");
+                return;
+            }
             //Pine_sTool.DetailedFunctionalities.MES.MES_Manage form = new DetailedFunctionalities.MES.MES_Manage();
             Pine_sTool.DetailedFunctionalities.MES.MES_Manage_New form = new DetailedFunctionalities.MES.MES_Manage_New();
             form.Show();
         }
 
+        private void PLM_LCSJ_BarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DetailedFunctionalities.PLM.流程审计.LCSJGL fm = new DetailedFunctionalities.PLM.流程审计.LCSJGL();
+            LoadFrmPage(fm, "流程审计");
+            //fm.Show();
+        }
+
         //private void timer2_Tick(object sender, EventArgs e)
         //{
-
         //}
     }
 

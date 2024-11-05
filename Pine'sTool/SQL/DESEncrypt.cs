@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Pine_sTool
 {
-    class DESEncrypt
+    internal class DESEncrypt
     {  //默认密钥向量
         public static byte[] Keys = { 0x76, 0x24, 0x56, 0x47, 0x47, 0xDC, 0xAE, 0xCF };
+
         /// <summary>
         /// DES加密字符串
         /// </summary>
@@ -36,6 +34,7 @@ namespace Pine_sTool
                 return encryptString;
             }
         }
+
         /// <summary>
         /// DES解密字符串
         /// </summary>

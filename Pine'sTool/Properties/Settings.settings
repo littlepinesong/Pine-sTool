@@ -50,5 +50,11 @@
     <Setting Name="MES_ThreadNum" Type="System.String" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
+    <Setting Name="PLM_User" Type="System.String" Scope="User">
+      <Value Profile="(Default)">219523</Value>
+    </Setting>
+    <Setting Name="PLM_Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Lh187114</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

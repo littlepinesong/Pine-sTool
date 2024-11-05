@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Pine_sTool.DetailedFunctionalities
@@ -17,9 +12,12 @@ namespace Pine_sTool.DetailedFunctionalities
     public partial class ProcessControl : DevExpress.XtraEditors.XtraForm
     {
         public delegate void ControlPanelMessage(string message);
+
         public event ControlPanelMessage ShowMessage;
-        Process[] myProcess;
-        DataTable dgvProcessTable = new DataTable();
+
+        private Process[] myProcess;
+        private DataTable dgvProcessTable = new DataTable();
+
         public ProcessControl()
         {
             InitializeComponent();
@@ -57,7 +55,9 @@ namespace Pine_sTool.DetailedFunctionalities
                 //获取光标所在列
                 string mouseColumn = ProcessGridView.FocusedColumn.FieldName.ToString();
                 //判断光标是否在行和指定列
+
                 #region 双击路径
+
                 if (hInfo.InRow && mouseColumn == "TempArchiveFolderPath")
                 {
                     //取得选定行信息
@@ -72,7 +72,8 @@ namespace Pine_sTool.DetailedFunctionalities
                         MessageBox.Show(ex.ToString());
                     }
                 }
-                #endregion
+
+                #endregion 双击路径
             }
         }
 
@@ -94,9 +95,9 @@ namespace Pine_sTool.DetailedFunctionalities
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // dataLayoutControl1
-            // 
+            //
             this.dataLayoutControl1.Controls.Add(this.GetAllProcessSimpleButton);
             this.dataLayoutControl1.Controls.Add(this.ProcessGridControl);
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -107,9 +108,9 @@ namespace Pine_sTool.DetailedFunctionalities
             this.dataLayoutControl1.Size = new System.Drawing.Size(1102, 761);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
-            // 
+            //
             // GetAllProcessSimpleButton
-            // 
+            //
             this.GetAllProcessSimpleButton.Location = new System.Drawing.Point(12, 12);
             this.GetAllProcessSimpleButton.Name = "GetAllProcessSimpleButton";
             this.GetAllProcessSimpleButton.Size = new System.Drawing.Size(1078, 22);
@@ -117,9 +118,9 @@ namespace Pine_sTool.DetailedFunctionalities
             this.GetAllProcessSimpleButton.TabIndex = 5;
             this.GetAllProcessSimpleButton.Text = "获取所有进程";
             this.GetAllProcessSimpleButton.Click += new System.EventHandler(this.GetAllProcessSimpleButton_Click);
-            // 
+            //
             // ProcessGridControl
-            // 
+            //
             this.ProcessGridControl.Location = new System.Drawing.Point(12, 38);
             this.ProcessGridControl.MainView = this.ProcessGridView;
             this.ProcessGridControl.Name = "ProcessGridControl";
@@ -128,15 +129,15 @@ namespace Pine_sTool.DetailedFunctionalities
             this.ProcessGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.ProcessGridView});
             this.ProcessGridControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ProcessGridControl_MouseDown);
-            // 
+            //
             // ProcessGridView
-            // 
+            //
             this.ProcessGridView.GridControl = this.ProcessGridControl;
             this.ProcessGridView.Name = "ProcessGridView";
             this.ProcessGridView.OptionsView.ShowGroupPanel = false;
-            // 
+            //
             // layoutControlGroup1
-            // 
+            //
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.layoutControlGroup1.GroupBordersVisible = false;
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
@@ -145,27 +146,27 @@ namespace Pine_sTool.DetailedFunctionalities
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(1102, 761);
             this.layoutControlGroup1.TextVisible = false;
-            // 
+            //
             // layoutControlItem1
-            // 
+            //
             this.layoutControlItem1.Control = this.ProcessGridControl;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(1082, 715);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
-            // 
+            //
             // layoutControlItem2
-            // 
+            //
             this.layoutControlItem2.Control = this.GetAllProcessSimpleButton;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(1082, 26);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
-            // 
+            //
             // ProcessControl
-            // 
+            //
             this.ClientSize = new System.Drawing.Size(1102, 761);
             this.Controls.Add(this.dataLayoutControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -181,7 +182,6 @@ namespace Pine_sTool.DetailedFunctionalities
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             this.ResumeLayout(false);
-
         }
 
         private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
@@ -190,6 +190,6 @@ namespace Pine_sTool.DetailedFunctionalities
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraEditors.SimpleButton GetAllProcessSimpleButton;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;        
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
     }
 }
